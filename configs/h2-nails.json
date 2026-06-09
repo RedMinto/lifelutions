@@ -1,0 +1,34 @@
+{
+  "clientId": "h2-nails",
+  "name": "H2 Nails & Spa",
+  "brandColor": "#d6336c",
+  "accent": "#f783ac",
+  "phone": "416-222-6864",
+  "bookingUrl": "https://h2nail.com",
+  "endpoint": "",
+  "leadEndpoint": "",
+  "greeting": "Hi! 💅 Welcome to H2 Nails & Spa. I can help with services, prices, hours, or booking your visit. What can I do for you?",
+  "kb": {
+    "hours": "Mon–Sat 10am–8pm, Sun 11am–6pm (please confirm — sample)",
+    "location": "5311 Yonge St, North York (Yonge & Finch area)",
+    "services": [
+      { "name": "Classic Manicure", "price": "$25" },
+      { "name": "Gel/Shellac Manicure", "price": "$40" },
+      { "name": "Classic Pedicure", "price": "$40" },
+      { "name": "Spa Pedicure", "price": "$55" },
+      { "name": "Acrylic Full Set", "price": "$60+" },
+      { "name": "Builder Gel", "price": "$55+" },
+      { "name": "Dip Powder", "price": "$50" },
+      { "name": "Nail Art", "price": "from $5/nail" },
+      { "name": "Soak-off / Removal", "price": "$15" }
+    ],
+    "faqs": [
+      { "q": ["walk in", "walk-in", "appointment needed"], "a": "Walk-ins are welcome, but booking ahead guarantees your spot — especially evenings and weekends." },
+      { "q": ["how long", "duration", "take"], "a": "Most manicures take 30–45 min; pedicures and full sets 60–75 min." },
+      { "q": ["gel vs dip", "dip vs gel", "difference"], "a": "Gel is cured polish with a glossy finish (2–3 wks). Dip powder is more durable (3–4 wks) and great for natural-nail strength. Happy to recommend based on your nails!" },
+      { "q": ["gift card", "gift certificate"], "a": "Yes! Gift cards are available in any amount — just ask in-store or call us." },
+      { "q": ["parking"], "a": "There's parking available at the plaza, plus street parking nearby." }
+    ]
+  },
+  "_note": "TEMPLATE — confirm real services/prices/hours/booking link with the client before going live."
+}

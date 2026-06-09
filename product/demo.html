@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lifelutions Chat Widget — Live Demo</title>
+<style>
+  body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0f1117;color:#e8ebf2}
+  .wrap{max-width:760px;margin:0 auto;padding:70px 24px 140px}
+  h1{font-size:2rem;margin:0 0 8px}.sub{color:#9aa3b2;margin:0 0 30px}
+  .box{background:#161922;border:1px solid #262b38;border-radius:14px;padding:22px;margin:14px 0}
+  code{background:#0c0e14;padding:2px 7px;border-radius:6px;color:#7cffd4;font-size:13px}
+  pre{background:#0c0e14;border:1px solid #262b38;border-radius:10px;padding:16px;overflow:auto;font-size:12.5px;color:#c8cee0}
+  .pill{display:inline-block;background:#1c2230;border:1px solid #2b3242;border-radius:999px;padding:5px 12px;font-size:12px;color:#9aa3b2;margin:2px}
+  b{color:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>💬 Lifelutions Chat — live widget demo</h1>
+  <p class="sub">This page has the real embeddable widget running (bottom-right). It's loaded with the H2 Nails sample config in <b>local mode</b> — no backend needed. Click the bubble and ask about prices, hours, gel vs dip, or booking.</p>
+
+  <div class="box">
+    <b>What the client pastes on their site (one time):</b>
+    <pre>&lt;script&gt;
+  window.LIFELUTIONS_CONFIG = {
+    name: "H2 Nails &amp; Spa",
+    brandColor: "#d6336c",
+    phone: "416-222-6864",
+    bookingUrl: "https://h2nail.com",
+    endpoint: "",            // set to your Cloudflare Worker URL for real AI
+    kb: { hours: "...", services: [...], faqs: [...] }
+  };
+&lt;/script&gt;
+&lt;script src="https://redminto.github.io/lifelutions/product/widget.js" defer&gt;&lt;/script&gt;</pre>
+    <span class="pill">Works on WordPress, Shopify, Wix, Squarespace, custom</span>
+    <span class="pill">No backend required (local mode)</span>
+    <span class="pill">Upgrades to real LLM with a Worker URL</span>
+  </div>
+
+  <div class="box">
+    <b>Try asking the bot →</b>
+    <p style="color:#9aa3b2">"How much is a gel manicure?" · "What are your hours?" · "Gel or dip?" · "Can I book?"</p>
+  </div>
+</div>
+
+<!-- live widget (local mode) -->
+<script>
+window.LIFELUTIONS_CONFIG = {
+  clientId: "h2-nails",
+  name: "H2 Nails & Spa",
+  brandColor: "#d6336c",
+  accent: "#f783ac",
+  phone: "416-222-6864",
+  bookingUrl: "https://h2nail.com",
+  endpoint: "",
+  greeting: "Hi! 💅 Welcome to H2 Nails & Spa. Ask me about services, prices, hours, or booking!",
+  kb: {
+    hours: "Mon–Sat 10am–8pm, Sun 11am–6pm",
+    location: "5311 Yonge St, North York",
+    services: [
+      { name: "Classic Manicure", price: "$25" },
+      { name: "Gel/Shellac Manicure", price: "$40" },
+      { name: "Classic Pedicure", price: "$40" },
+      { name: "Spa Pedicure", price: "$55" },
+      { name: "Acrylic Full Set", price: "$60+" },
+      { name: "Dip Powder", price: "$50" },
+      { name: "Nail Art", price: "from $5/nail" },
+      { name: "Removal", price: "$15" }
+    ],
+    faqs: [
+      { q: ["walk in","walk-in"], a: "Walk-ins are welcome, but booking ahead guarantees your spot — especially evenings & weekends." },
+      { q: ["how long","take","duration"], a: "Manicures ~30–45 min; pedicures & full sets ~60–75 min." },
+      { q: ["gel vs dip","dip vs gel","difference"], a: "Gel = glossy cured polish (2–3 wks). Dip = more durable (3–4 wks) and strengthens natural nails. I can recommend based on your nails!" },
+      { q: ["gift card","gift certificate"], a: "Yes! Gift cards available in any amount — ask in-store or call us." },
+      { q: ["parking"], a: "Plaza parking plus street parking nearby." }
+    ]
+  }
+};
+</script>
+<script src="../product/widget.js" defer></script>
+</body>
+</html>
