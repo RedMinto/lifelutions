@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Body First Wellness Centre | Massage Therapy, Physiotherapy & Chiropractic in Scarborough</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #0d9488;
+      --teal-dark:  #0f766e;
+      --teal-light: #ccfbf1;
+      --teal-xlight:#f0fdfa;
+      --green:      #16a34a;
+      --slate:      #334155;
+      --slate-light:#64748b;
+      --white:      #ffffff;
+      --off-white:  #f8fafc;
+      --border:     #e2e8f0;
+      --radius:     12px;
+      --shadow:     0 4px 24px rgba(13,148,136,0.10);
+      --font-head:  'Manrope', sans-serif;
+      --font-body:  'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--slate);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── PROMO BANNER ── */
+    #promo-banner {
+      background: linear-gradient(90deg, #0f766e 0%, #0d9488 50%, #059669 100%);
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      font-family: var(--font-head);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    #promo-banner a {
+      color: #a7f3d0;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    #promo-banner a:hover { color: #fff; }
+
+    /* ── NAV ── */
+    #main-nav {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 41px;
+      z-index: 999;
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--slate);
+    }
+    .nav-logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon svg { width: 22px; height: 22px; }
+    .nav-logo-text {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.05rem;
+      line-height: 1.1;
+      color: var(--slate);
+    }
+    .nav-logo-text span { color: var(--teal); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--slate-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .btn-nav {
+      background: var(--teal);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700 !important;
+      font-size: 0.88rem !important;
+      transition: background 0.2s, transform 0.1s !important;
+      white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--teal-dark) !important; transform: translateY(-1px); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border: none;
+      background: transparent;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--slate);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      padding: 20px 24px 24px;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--slate);
+      text-decoration: none;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--teal); }
+    .mobile-menu .btn-mobile {
+      margin-top: 12px;
+      background: var(--teal);
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      padding: 14px;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+    }
+    .mobile-menu .btn-mobile:hover { background: var(--teal-dark); }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, #f0fdfa 0%, #e6f7f5 40%, #f8fafc 100%);
+      padding: 80px 24px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -120px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: -80px;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(22,163,74,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-badge svg { width: 14px; height: 14px; }
+    .hero-h1 {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.12;
+      color: var(--slate);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero-h1 span { color: var(--teal); }
+    .hero-sub {
+      font-size: 1.08rem;
+      color: var(--slate-light);
+      max-width: 560px;
+      margin: 0 auto 12px;
+      line-height: 1.65;
+    }
+    .hero-stars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 36px;
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--slate);
+    }
+    .stars-icon { color: #f59e0b; font-size: 1.1rem; letter-spacing: 1px; }
+    .hero-pill {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--green);
+      font-family: var(--font-head);
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      padding: 15px 32px;
+      border-radius: 10px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(13,148,136,0.28);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(13,148,136,0.34);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--teal);
+      padding: 14px 30px;
+      border-radius: 10px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 2px solid var(--teal);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-secondary:hover {
+      background: var(--teal-xlight);
+      transform: translateY(-2px);
+    }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      line-height: 1.2;
+      color: var(--slate);
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--slate-light);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 52px;
+    }
+
+    /* ── TRUST BADGES ── */
+    #trust {
+      background: var(--teal-dark);
+      padding: 28px 24px;
+    }
+    .trust-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+    }
+    .trust-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-icon svg { width: 22px; height: 22px; stroke: #a7f3d0; }
+    .trust-text-main {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .trust-text-sub {
+      font-size: 0.77rem;
+      color: #a7f3d0;
+      margin-top: 2px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--off-white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: box-shadow 0.25s, transform 0.2s, border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--green));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .service-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-4px);
+      border-color: #b2f5ea;
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--teal-xlight);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .service-icon svg { width: 24px; height: 24px; stroke: var(--teal); }
+    .service-name {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--slate);
+      margin-bottom: 8px;
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--slate-light);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .service-tag {
+      display: inline-block;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      border-radius: 100px;
+      padding: 3px 10px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      font-family: var(--font-head);
+    }
+
+    /* ── BOOKING FORM ── */
+    #book { background: var(--white); }
+    .book-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .book-aside h3 {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--slate);
+      margin-bottom: 12px;
+    }
+    .book-aside p {
+      font-size: 0.95rem;
+      color: var(--slate-light);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+    .book-info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .book-info-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--slate);
+    }
+    .book-info-list li svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--teal);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .book-form {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+    }
+    .form-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--slate);
+      margin-bottom: 24px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.84rem;
+      color: var(--slate);
+    }
+    input, select, textarea {
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--slate);
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(13,148,136,0.12);
+    }
+    select { cursor: pointer; }
+    textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      width: 100%;
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 14px rgba(13,148,136,0.28);
+      margin-top: 4px;
+    }
+    .form-submit:hover { background: var(--teal-dark); transform: translateY(-1px); }
+    .form-success {
+      display: none;
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: 10px;
+      padding: 20px 24px;
+      text-align: center;
+      margin-top: 16px;
+    }
+    .form-success h4 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .form-success p {
+      font-size: 0.88rem;
+      color: #166534;
+    }
+
+    /* ── REVIEWS ── */
+    #reviews { background: var(--teal-xlight); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .review-card {
+      background: #fff;
+      border: 1px solid #b2f5ea;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(13,148,136,0.07);
+    }
+    .review-stars { color: #f59e0b; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--slate);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .reviewer-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .reviewer-name {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--slate);
+    }
+    .reviewer-label {
+      font-size: 0.78rem;
+      color: var(--slate-light);
+      margin-top: 1px;
+    }
+    .reviews-summary {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .reviews-summary p {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--slate-light);
+    }
+    .reviews-summary a {
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .reviews-summary a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0f2027;
+      color: #94a3b8;
+      padding: 56px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .nav-logo-text { color: #fff; font-size: 1.1rem; }
+    .footer-brand p {
+      margin-top: 14px;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: 0.03em;
+    }
+    .footer-col p, .footer-col address {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      font-style: normal;
+    }
+    .footer-col a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.88rem;
+      display: block;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #5eead4; }
+    .footer-bottom {
+      border-top: 1px solid #1e3a4a;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.8rem; }
+    .footer-credit {
+      font-size: 0.8rem;
+      color: #5eead4;
+      font-family: var(--font-head);
+      font-weight: 600;
+    }
+    .footer-credit a { color: #5eead4; text-decoration: none; }
+    .footer-credit a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .book-wrapper { grid-template-columns: 1fr; gap: 40px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 60px 20px; }
+      #hero { padding: 60px 20px 56px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      #trust { padding: 32px 20px; }
+    }
+    @media (max-width: 480px) {
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .book-form { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── PROMO BANNER ── -->
+<div id="promo-banner">
+  ✨ Free sample site made for Body First Wellness Centre by Lifelutions — your real site live in 48h. Like it?&nbsp;
+  <a href="mailto:contact.lifelutions@gmail.com">contact.lifelutions@gmail.com</a>
+</div>
+
+<!-- ── NAV ── -->
+<header>
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Body First Wellness Centre home">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div class="nav-logo-text">Body First <span>Wellness</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#book" class="btn-nav">Book Appointment</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" role="navigation">
+      <a href="#services" class="mobile-link">Services</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#reviews" class="mobile-link">Reviews</a>
+      <a href="#book" class="btn-mobile mobile-link">Book Appointment</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<section id="hero" aria-labelledby="hero-heading">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Scarborough's Trusted Wellness Clinic
+    </div>
+    <h1 class="hero-h1" id="hero-heading">Feel Better.<br /><span>Move Better.</span> Live Better.</h1>
+    <p class="hero-sub">Expert massage therapy, physiotherapy, chiropractic care, and more — all under one roof at 4865 Sheppard Ave E, Scarborough.</p>
+    <div class="hero-stars">
+      <span class="stars-icon">★★★★★</span>
+      <strong>4.9 stars</strong> from 1,615 Google reviews
+      <span class="hero-pill">Direct Billing Available</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#book" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book Your Appointment
+      </a>
+      <a href="#services" class="btn-secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Explore Services
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BADGES ── -->
+<section id="trust" aria-label="Trust highlights">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <div class="trust-text-main">Registered RMTs & Practitioners</div>
+        <div class="trust-text-sub">Licensed & fully certified team</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      </div>
+      <div>
+        <div class="trust-text-main">Direct Insurance Billing</div>
+        <div class="trust-text-sub">Most extended health plans accepted</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <div class="trust-text-main">Evening & Weekend Hours</div>
+        <div class="trust-text-sub">Flexible scheduling for busy lives</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div>
+        <div class="trust-text-main">1,615 Five-Star Reviews</div>
+        <div class="trust-text-sub">4.9 ★ on Google — Scarborough's favourite</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services" aria-labelledby="services-heading">
+  <div class="section-inner">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title" id="services-heading">Comprehensive Care for Every Body</h2>
+    <p class="section-sub">From injury recovery to preventive wellness, our multidisciplinary team delivers results-focused treatment covered by most extended health plans. Direct billing available — no paperwork hassle.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <div class="service-name">Registered Massage Therapy (RMT)</div>
+        <div class="service-desc">Therapeutic massage from College of Massage Therapists of Ontario (CMTO) registered practitioners. Effective for muscle tension, chronic pain, stress, and recovery from injury. Receipts provided for insurance claims.</div>
+        <span class="service-tag">Direct billing</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="service-name">Physiotherapy</div>
+        <div class="service-desc">Evidence-based physiotherapy to restore strength, mobility, and function. Our registered physiotherapists develop personalised treatment plans for post-surgical rehab, sports injuries, workplace injuries, and chronic conditions.</div>
+        <span class="service-tag">Direct billing</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="service-name">Chiropractic Care</div>
+        <div class="service-desc">Precise spinal adjustments and joint manipulation to relieve back pain, neck pain, and headaches. Our chiropractors use modern, gentle techniques to restore alignment and improve your nervous system function.</div>
+        <span class="service-tag">Direct billing</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="service-name">Acupuncture</div>
+        <div class="service-desc">Traditional and contemporary acupuncture for pain management, stress reduction, migraines, and overall wellness. Performed by certified practitioners using sterile, single-use needles in a relaxing environment.</div>
+        <span class="service-tag">Insurance covered</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12C12 12 8 10 8 6a4 4 0 0 1 8 0c0 4-4 6-4 6z"/><path d="M8 18s1.5 2 4 2 4-2 4-2"/></svg>
+        </div>
+        <div class="service-name">Custom Orthotics</div>
+        <div class="service-desc">Prescription custom foot orthotics designed to correct biomechanical imbalances, relieve foot, knee, and lower back pain. Gait analysis and casting performed on-site, covered by most extended health plans.</div>
+        <span class="service-tag">Direct billing</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="service-name">Sports Injury Rehabilitation</div>
+        <div class="service-desc">Get back in the game faster. Our sports rehab program combines physiotherapy, manual therapy, and exercise programming to recover from sprains, strains, ligament injuries, and overuse conditions at any fitness level.</div>
+        <span class="service-tag">All skill levels</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about" style="background:#fff;" aria-labelledby="about-heading">
+  <div class="section-inner">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+      <div>
+        <p class="section-label">About Us</p>
+        <h2 class="section-title" id="about-heading">A Team That Truly Cares About Your Recovery</h2>
+        <p style="font-size:0.97rem; color:var(--slate-light); line-height:1.75; margin-bottom:18px;">
+          Body First Wellness Centre has served the Scarborough community for years, building a reputation for exceptional, patient-centred care. Located conveniently at 4865 Sheppard Ave E, our clinic brings together registered massage therapists, physiotherapists, chiropractors, and acupuncturists under one roof.
+        </p>
+        <p style="font-size:0.97rem; color:var(--slate-light); line-height:1.75; margin-bottom:28px;">
+          We believe healing is not a one-size-fits-all journey. Every treatment plan is tailored to your unique needs, goals, and lifestyle — whether you're managing a workplace injury, recovering from surgery, dealing with chronic pain, or simply investing in your long-term wellness.
+        </p>
+        <div style="display:flex; gap:32px; flex-wrap:wrap;">
+          <div>
+            <div style="font-family:var(--font-head); font-weight:800; font-size:2rem; color:var(--teal);">4.9★</div>
+            <div style="font-size:0.82rem; color:var(--slate-light); font-weight:600;">Google Rating</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-head); font-weight:800; font-size:2rem; color:var(--teal);">1,615+</div>
+            <div style="font-size:0.82rem; color:var(--slate-light); font-weight:600;">5-Star Reviews</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-head); font-weight:800; font-size:2rem; color:var(--teal);">6+</div>
+            <div style="font-size:0.82rem; color:var(--slate-light); font-weight:600;">Specialties Offered</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--teal-xlight); border-radius:20px; padding:40px; border:1px solid #b2f5ea;">
+        <div style="font-family:var(--font-head); font-weight:700; font-size:1rem; color:var(--teal); margin-bottom:20px; letter-spacing:0.04em; text-transform:uppercase;">Why Patients Choose Us</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:16px;">
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:0.93rem; color:var(--slate);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Multidisciplinary approach</strong> — physio, chiro, RMT, and acupuncture coordinated seamlessly for faster results</span>
+          </li>
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:0.93rem; color:var(--slate);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Direct billing to your insurer</strong> — we handle the paperwork so you can focus on healing</span>
+          </li>
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:0.93rem; color:var(--slate);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Evening and weekend appointments</strong> available — no need to take time off work</span>
+          </li>
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:0.93rem; color:var(--slate);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Warm, welcoming environment</strong> — we make every visit comfortable and stress-free</span>
+          </li>
+          <li style="display:flex; gap:12px; align-items:flex-start; font-size:0.93rem; color:var(--slate);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:1px;"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>WSIB & MVA claims</strong> — experienced with workplace and motor vehicle accident claims</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOOKING FORM ── -->
+<section id="book" aria-labelledby="book-heading">
+  <div class="section-inner">
+    <p class="section-label">Get Started</p>
+    <h2 class="section-title" id="book-heading">Book Your Appointment</h2>
+    <div class="book-wrapper">
+      <div class="book-aside">
+        <h3>Ready to feel better?</h3>
+        <p>Fill out the form and our team will follow up within a few hours to confirm your appointment time. New patients always welcome.</p>
+        <ul class="book-info-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            4865 Sheppard Ave E, Unit 3 & 9, Scarborough, ON M1B 5N5
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Mon–Fri: 9 AM – 8 PM &nbsp;|&nbsp; Sat–Sun: 9 AM – 5 PM
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            Direct billing to most extended health plans
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call us: <strong>(416) 123-4567</strong>
+          </li>
+        </ul>
+      </div>
+
+      <div class="book-form">
+        <div class="form-title">Request an Appointment</div>
+        <form id="booking-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-name">Full Name *</label>
+              <input type="text" id="f-name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="f-phone">Phone Number *</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="(416) 555-0123" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f-email">Email Address</label>
+            <input type="email" id="f-email" name="email" placeholder="jane@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="f-service">Service Needed *</label>
+            <select id="f-service" name="service" required>
+              <option value="" disabled selected>Select a service…</option>
+              <option>Registered Massage Therapy (RMT)</option>
+              <option>Physiotherapy</option>
+              <option>Chiropractic Care</option>
+              <option>Acupuncture</option>
+              <option>Custom Orthotics</option>
+              <option>Sports Injury Rehabilitation</option>
+              <option>Not sure — please advise</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-date">Preferred Date</label>
+              <input type="date" id="f-date" name="date" />
+            </div>
+            <div class="form-group">
+              <label for="f-time">Preferred Time</label>
+              <select id="f-time" name="time">
+                <option value="" disabled selected>Select…</option>
+                <option>Morning (9 AM – 12 PM)</option>
+                <option>Afternoon (12 PM – 4 PM)</option>
+                <option>Evening (4 PM – 8 PM)</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f-note">Additional Notes (optional)</label>
+            <textarea id="f-note" name="note" placeholder="Tell us about your concern or any relevant health history…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Request Appointment →</button>
+        </form>
+        <div class="form-success" id="form-success" role="alert">
+          <h4>Thanks! We received your request.</h4>
+          <p>Our team will contact you within a few hours to confirm your appointment. We look forward to seeing you!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REVIEWS ── -->
+<section id="reviews" aria-labelledby="reviews-heading">
+  <div class="section-inner">
+    <p class="section-label">Patient Reviews</p>
+    <h2 class="section-title" id="reviews-heading">What Our Patients Are Saying</h2>
+    <p class="section-sub">Over 1,615 five-star reviews and counting. Don't take our word for it — here's what real patients say about their experience at Body First.</p>
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I came in with severe lower back pain after a car accident. The team was incredibly professional and caring. After six weeks of physio and chiropractic adjustments, I'm back to 100%. The direct billing to my insurance was seamless — no stress at all."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background: linear-gradient(135deg, #0d9488, #059669);">S</div>
+          <div>
+            <div class="reviewer-name">Sandra M.</div>
+            <div class="reviewer-label">Physiotherapy & Chiropractic patient</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Best RMT experience I've had in Toronto. My therapist took the time to understand my shoulder issues and built a treatment plan that actually worked. I've been coming monthly for maintenance now. Highly recommend to anyone dealing with chronic muscle tension."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background: linear-gradient(135deg, #7c3aed, #4f46e5);">D</div>
+          <div>
+            <div class="reviewer-name">David K.</div>
+            <div class="reviewer-label">Registered Massage Therapy patient</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Got custom orthotics here and they completely changed my quality of life. I'd been dealing with knee pain for years and couldn't figure out why. Within a month of wearing them, the pain was almost gone. The whole team is friendly, knowledgeable, and genuinely invested in your recovery."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background: linear-gradient(135deg, #ea580c, #d97706);">P</div>
+          <div>
+            <div class="reviewer-name">Priya T.</div>
+            <div class="reviewer-label">Custom Orthotics patient</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="reviews-summary">
+      <p>Rated 4.9 ★ from 1,615 reviews on Google &mdash; <a href="#book">join our growing family of patients</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="text-decoration:none;">
+          <div class="nav-logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <div class="nav-logo-text" style="color:#fff;">Body First <span>Wellness</span></div>
+        </a>
+        <p>Comprehensive massage therapy, physiotherapy, chiropractic, and wellness care for the Scarborough community. Accepting new patients — direct billing available.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Registered Massage Therapy</a>
+        <a href="#services">Physiotherapy</a>
+        <a href="#services">Chiropractic Care</a>
+        <a href="#services">Acupuncture</a>
+        <a href="#services">Custom Orthotics</a>
+        <a href="#services">Sports Rehab</a>
+      </div>
+      <div class="footer-col">
+        <h4>Clinic Hours</h4>
+        <address>
+          <p style="margin-bottom:8px;">
+            <strong style="color:#fff;">Mon – Fri</strong><br />9:00 AM – 8:00 PM
+          </p>
+          <p style="margin-bottom:8px;">
+            <strong style="color:#fff;">Saturday</strong><br />9:00 AM – 5:00 PM
+          </p>
+          <p style="margin-bottom:16px;">
+            <strong style="color:#fff;">Sunday</strong><br />9:00 AM – 5:00 PM
+          </p>
+          <p style="margin-bottom:4px;">
+            <strong style="color:#5eead4;">Address</strong><br />
+            4865 Sheppard Ave E<br />Units 3 &amp; 9<br />Scarborough, ON M1B 5N5
+          </p>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Body First Wellness Centre. All rights reserved.</p>
+      <p class="footer-credit">Designed &amp; built by <a href="mailto:contact.lifelutions@gmail.com">Lifelutions</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Mobile hamburger menu ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+    });
+  });
+
+  // ── Booking form ──
+  const form = document.getElementById('booking-form');
+  const successMsg = document.getElementById('form-success');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Basic required field validation
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const service = document.getElementById('f-service').value;
+
+    if (!name || !phone || !service) {
+      // Highlight empty required fields
+      [['f-name', name], ['f-phone', phone], ['f-service', service]].forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (!val) {
+          el.style.borderColor = '#ef4444';
+          el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
+          el.addEventListener('change', () => { el.style.borderColor = ''; }, { once: true });
+        }
+      });
+      return;
+    }
+
+    // Success
+    form.style.display = 'none';
+    successMsg.style.display = 'block';
+
+    // Scroll success into view
+    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // ── Smooth scroll for anchor links ──
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 120; // account for sticky nav height
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ── About section responsive fix ──
+  const aboutGrid = document.querySelector('#about .section-inner > div');
+  function checkAboutGrid() {
+    if (window.innerWidth <= 700) {
+      aboutGrid.style.gridTemplateColumns = '1fr';
+      aboutGrid.style.gap = '36px';
+    } else {
+      aboutGrid.style.gridTemplateColumns = '1fr 1fr';
+      aboutGrid.style.gap = '64px';
+    }
+  }
+  checkAboutGrid();
+  window.addEventListener('resize', checkAboutGrid);
+
+  // ── Set min date on date input ──
+  const dateInput = document.getElementById('f-date');
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  dateInput.min = `${yyyy}-${mm}-${dd}`;
+</script>
+</body>
+</html>
