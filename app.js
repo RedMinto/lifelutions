@@ -78,7 +78,7 @@ function demoReply(msg) {
   const has = (...k) => k.some(w => m.includes(w));
 
   if (has('price', 'cost', 'how much', 'pricing', '$', 'budget'))
-    return { text: "Everything is fixed-price, no surprises:<br>• <b>AI Chatbot</b> — from $497<br>• <b>Website in 48h</b> — from $697<br>• <b>Website + Chatbot bundle</b> — $997 (save ~$200)<br>• <b>Automation Sprint</b> — from $450<br>• <b>Quick-Win Audit</b> — $150 (credited toward any package)<br><br>Want me to set up a quick call to scope your project?", options: ["Book a call", "Tell me about chatbots", "What's the audit?"] };
+    return { text: "Two simple plans for your AI assistant:<br>• <b>Setup + Lite</b> — $497 once + $79/mo<br>• <b>Monthly</b> — $129/mo, no setup, cancel anytime<br><br>Live in 2–3 days, trained on your business. Want me to set up a quick call?", options: ["Book a call", "Tell me about chatbots", "How fast?"] };
   if (has('chatbot', 'chat bot', 'bot', 'ai assistant', 'support'))
     return { text: "The AI chatbot is trained on <i>your</i> business — your site, FAQs, and docs. It answers customer questions 24/7, captures leads, and can share booking links. Embeds on any site (WordPress, Shopify, Squarespace, custom). From $497, live in 2–3 days. This very chat is an example of what you'd get 😉", options: ["How much?", "Book a call", "What about websites?"] };
   if (has('website', 'site', 'web ', 'landing', 'web page'))
