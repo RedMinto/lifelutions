@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lumi Nail Studio — Toronto | Lumi Nail Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blush:     #f5ddd5;
+  --rose-gold: #c9956a;
+  --rose-deep: #b07050;
+  --cream:     #fdf6f0;
+  --warm-white:#fffaf7;
+  --charcoal:  #2c2420;
+  --muted:     #7a6258;
+  --chat-bg:   #fff9f6;
+  --chat-user: #c9956a;
+  --chat-bot:  #f3ebe6;
+  --chip-bg:   #f9ede6;
+  --chip-border:#d4a882;
+  --shadow:    0 4px 32px rgba(44,36,32,.10);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────
+   DEMO BANNER
+───────────────────────────────────────── */
+.demo-banner {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: #1a1a2e;
+  color: #e8e8f0;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: .02em;
+  padding: 9px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.demo-banner a {
+  color: #b8b8d8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+  transition: color .2s;
+}
+.demo-banner a:hover { color: #fff; }
+.demo-banner .dot { color: #5b8dee; font-size: 16px; }
+.demo-banner .sep { opacity: .4; }
+
+/* ─────────────────────────────────────────
+   SITE NAV
+───────────────────────────────────────── */
+.site-nav {
+  background: rgba(253,246,240,.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(201,149,106,.15);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: var(--charcoal);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--rose-gold); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--rose-gold); }
+.nav-book-btn {
+  background: var(--rose-gold);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s;
+  border-radius: 2px;
+}
+.nav-book-btn:hover { background: var(--rose-deep); }
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  min-height: 88vh;
+  background:
+    linear-gradient(160deg, rgba(253,246,240,.96) 0%, rgba(245,221,213,.82) 60%, rgba(201,149,106,.18) 100%),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><defs><radialGradient id="a" cx="50%25" cy="50%25" r="50%25"><stop offset="0%25" stop-color="%23f5ddd5" stop-opacity=".6"/><stop offset="100%25" stop-color="%23c9956a" stop-opacity=".1"/></radialGradient></defs><rect width="600" height="600" fill="url(%23a)"/></svg>') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px 60px;
+  position: relative;
+  overflow: hidden;
+}
+/* decorative blobs */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,149,106,.13) 0%, transparent 70%);
+  top: -100px; right: -80px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(245,221,213,.35) 0%, transparent 70%);
+  bottom: -60px; left: -60px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-inner { max-width: 680px; position: relative; z-index: 1; }
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--rose-gold);
+  margin-bottom: 20px;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 7vw, 78px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--charcoal);
+  margin-bottom: 22px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--rose-gold);
+  font-weight: 300;
+}
+.hero-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: .03em;
+  max-width: 480px;
+  margin: 0 auto 36px;
+}
+.hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--rose-gold);
+  color: #fff;
+  border: none;
+  padding: 14px 34px;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background: var(--rose-deep); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent;
+  color: var(--charcoal);
+  border: 1px solid rgba(44,36,32,.3);
+  padding: 14px 34px;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: border-color .2s, color .2s, transform .15s;
+}
+.btn-outline:hover { border-color: var(--rose-gold); color: var(--rose-gold); transform: translateY(-1px); }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  background: rgba(255,255,255,.7);
+  border: 1px solid rgba(201,149,106,.25);
+  border-radius: 40px;
+  padding: 8px 18px;
+  font-size: 12.5px;
+  color: var(--muted);
+  letter-spacing: .04em;
+}
+.hero-badge .star { color: var(--rose-gold); font-size: 14px; }
+
+/* ─────────────────────────────────────────
+   SERVICES STRIP
+───────────────────────────────────────── */
+.services-strip {
+  background: var(--charcoal);
+  padding: 72px 40px;
+}
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--rose-gold);
+  margin-bottom: 14px;
+  text-align: center;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 300;
+  text-align: center;
+  color: var(--cream);
+  margin-bottom: 52px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.service-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(201,149,106,.12);
+  padding: 32px 28px;
+  transition: background .25s;
+}
+.service-card:hover { background: rgba(201,149,106,.08); }
+.service-icon { font-size: 24px; margin-bottom: 14px; }
+.service-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.service-desc { font-size: 13px; color: rgba(253,246,240,.55); line-height: 1.6; margin-bottom: 16px; }
+.service-price {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--rose-gold);
+  letter-spacing: .04em;
+}
+
+/* ─────────────────────────────────────────
+   ABOUT / INFO SECTION
+───────────────────────────────────────── */
+.info-section {
+  background: var(--warm-white);
+  padding: 88px 40px;
+}
+.info-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.info-text .section-label,
+.info-text .section-title { text-align: left; }
+.info-text .section-title { color: var(--charcoal); }
+.info-body {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 28px;
+}
+.detail-list { list-style: none; }
+.detail-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 14px;
+  color: var(--muted);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(201,149,106,.12);
+}
+.detail-list li:last-child { border-bottom: none; }
+.detail-icon { color: var(--rose-gold); width: 18px; flex-shrink: 0; margin-top: 2px; }
+.hours-card {
+  background: var(--blush);
+  border: 1px solid rgba(201,149,106,.2);
+  border-radius: 4px;
+  padding: 36px 32px;
+}
+.hours-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 24px;
+  color: var(--charcoal);
+}
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--muted);
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(201,149,106,.15);
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-row .day { font-weight: 500; color: var(--charcoal); }
+.closed { color: #c0847a !important; }
+.map-placeholder {
+  margin-top: 24px;
+  background: rgba(201,149,106,.1);
+  border: 1px solid rgba(201,149,106,.2);
+  border-radius: 4px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--rose-gold);
+  font-size: 13px;
+}
+.map-placeholder .pin { font-size: 24px; }
+
+/* ─────────────────────────────────────────
+   TESTIMONIALS
+───────────────────────────────────────── */
+.testimonials {
+  background: var(--blush);
+  padding: 88px 40px;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.tcard {
+  background: #fff;
+  border-radius: 4px;
+  padding: 32px;
+  box-shadow: 0 2px 16px rgba(44,36,32,.06);
+}
+.tcard-stars { color: var(--rose-gold); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+.tcard-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--charcoal);
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+.tcard-author { font-size: 12.5px; font-weight: 500; color: var(--muted); letter-spacing: .06em; }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+  background: var(--charcoal);
+  color: rgba(253,246,240,.5);
+  padding: 48px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+}
+footer .footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--cream);
+  letter-spacing: .06em;
+}
+footer a { color: rgba(253,246,240,.5); text-decoration: none; }
+footer a:hover { color: var(--rose-gold); }
+
+/* ─────────────────────────────────────────
+   CHAT LAUNCHER BUBBLE
+───────────────────────────────────────── */
+.chat-launcher {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 8000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--rose-gold);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(201,149,106,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.chat-launcher:hover {
+  background: var(--rose-deep);
+  transform: scale(1.07);
+  box-shadow: 0 6px 28px rgba(176,112,80,.55);
+}
+.chat-launcher svg { width: 26px; height: 26px; fill: #fff; transition: opacity .2s; }
+.chat-launcher .icon-close { display: none; }
+.chat-launcher.open .icon-chat { display: none; }
+.chat-launcher.open .icon-close { display: block; }
+.chat-notif {
+  position: absolute;
+  top: 0; right: 0;
+  background: #e07070;
+  color: #fff;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--cream);
+  animation: notif-pulse 2s ease-in-out infinite;
+}
+@keyframes notif-pulse {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+/* ─────────────────────────────────────────
+   CHAT WINDOW
+───────────────────────────────────────── */
+.chat-window {
+  position: fixed;
+  bottom: 100px;
+  right: 28px;
+  z-index: 8000;
+  width: 370px;
+  max-width: calc(100vw - 40px);
+  max-height: 600px;
+  height: calc(100vh - 160px);
+  background: var(--chat-bg);
+  border-radius: 16px;
+  box-shadow: 0 8px 48px rgba(44,36,32,.18), 0 2px 12px rgba(44,36,32,.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(.92) translateY(16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1), opacity .2s ease;
+  transform-origin: bottom right;
+}
+.chat-window.visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Chat header */
+.chat-header {
+  background: linear-gradient(135deg, var(--rose-gold) 0%, var(--rose-deep) 100%);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.chat-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,.4);
+}
+.chat-header-info { flex: 1; min-width: 0; }
+.chat-header-name {
+  font-weight: 600;
+  font-size: 14.5px;
+  color: #fff;
+  letter-spacing: .02em;
+}
+.chat-header-status {
+  font-size: 12px;
+  color: rgba(255,255,255,.8);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px;
+}
+.status-dot {
+  width: 7px; height: 7px;
+  background: #7ee8a2;
+  border-radius: 50%;
+  display: inline-block;
+}
+.chat-close-btn {
+  background: rgba(255,255,255,.2);
+  border: none;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+  flex-shrink: 0;
+}
+.chat-close-btn:hover { background: rgba(255,255,255,.35); }
+
+/* Messages area */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px 14px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+.chat-messages::-webkit-scrollbar { width: 4px; }
+.chat-messages::-webkit-scrollbar-track { background: transparent; }
+.chat-messages::-webkit-scrollbar-thumb { background: rgba(201,149,106,.3); border-radius: 2px; }
+
+/* Bubbles */
+.msg { display: flex; align-items: flex-end; gap: 8px; }
+.msg.bot { flex-direction: row; }
+.msg.user { flex-direction: row-reverse; }
+.msg-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose-gold), var(--rose-deep));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+.msg.bot .bubble {
+  background: #fff;
+  color: var(--charcoal);
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 4px rgba(44,36,32,.08);
+}
+.msg.user .bubble {
+  background: var(--chat-user);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.bubble strong { font-weight: 600; }
+.bubble a { color: var(--rose-gold); }
+.bubble .service-list { margin: 8px 0 4px; padding-left: 16px; }
+.bubble .service-list li { margin-bottom: 3px; }
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.typing-dots {
+  background: #fff;
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  padding: 12px 16px;
+  box-shadow: 0 1px 4px rgba(44,36,32,.08);
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.dot-anim {
+  width: 7px; height: 7px;
+  background: var(--rose-gold);
+  border-radius: 50%;
+  opacity: .5;
+  animation: bounce 1.2s ease-in-out infinite;
+}
+.dot-anim:nth-child(2) { animation-delay: .2s; }
+.dot-anim:nth-child(3) { animation-delay: .4s; }
+@keyframes bounce {
+  0%,100% { transform: translateY(0); opacity: .5; }
+  50%      { transform: translateY(-5px); opacity: 1; }
+}
+
+/* Quick-reply chips */
+.chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 4px 14px 10px;
+}
+.chip {
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  color: var(--rose-deep);
+  font-family: 'Jost', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 6px 13px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background .18s, color .18s, transform .12s;
+  white-space: nowrap;
+}
+.chip:hover {
+  background: var(--rose-gold);
+  color: #fff;
+  border-color: var(--rose-gold);
+  transform: translateY(-1px);
+}
+
+/* Input area */
+.chat-input-area {
+  border-top: 1px solid rgba(201,149,106,.15);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  flex-shrink: 0;
+}
+.chat-input {
+  flex: 1;
+  border: 1px solid rgba(201,149,106,.25);
+  border-radius: 20px;
+  padding: 9px 14px;
+  font-family: 'Jost', sans-serif;
+  font-size: 13.5px;
+  color: var(--charcoal);
+  background: var(--warm-white);
+  outline: none;
+  resize: none;
+  line-height: 1.4;
+  transition: border-color .2s;
+}
+.chat-input:focus { border-color: var(--rose-gold); }
+.chat-input::placeholder { color: rgba(122,98,88,.45); }
+.send-btn {
+  width: 38px; height: 38px;
+  background: var(--rose-gold);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s, transform .15s;
+}
+.send-btn:hover { background: var(--rose-deep); transform: scale(1.07); }
+.send-btn svg { width: 16px; height: 16px; fill: #fff; }
+.chat-powered {
+  text-align: center;
+  font-size: 10.5px;
+  color: rgba(122,98,88,.45);
+  padding: 0 12px 8px;
+  background: #fff;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .site-nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 20px 48px; }
+  .services-strip { padding: 56px 20px; }
+  .info-section { padding: 56px 20px; }
+  .info-inner { grid-template-columns: 1fr; gap: 40px; }
+  .testimonials { padding: 56px 20px; }
+  footer { padding: 36px 20px; }
+  .chat-window { right: 12px; bottom: 88px; width: calc(100vw - 24px); }
+  .chat-launcher { right: 16px; bottom: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ──────────────────────────────────────
+     DEMO BANNER
+──────────────────────────────────────── -->
+<div class="demo-banner">
+  <span class="dot">🔵</span>
+  <span><strong>DEMO</strong> &mdash; Example AI assistant Lifelutions builds for nail salons. Yours would know your real services &amp; prices.</span>
+  <span class="sep">|</span>
+  <a href="../index.html">← Back to Lifelutions</a>
+</div>
+
+<!-- ──────────────────────────────────────
+     NAVIGATION
+──────────────────────────────────────── -->
+<nav class="site-nav">
+  <a href="#" class="nav-logo">Lumi <span>Nail Studio</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-book-btn" onclick="openChat()">Book Now</button>
+</nav>
+
+<!-- ──────────────────────────────────────
+     HERO
+──────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Toronto's Chic Nail Destination</p>
+    <h1 class="hero-title">Where Every Detail<br/><em>Shines</em></h1>
+    <p class="hero-sub">Premium nail care crafted with precision, artistry, and care — in the heart of Queen West.</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="openChat()">Book an Appointment</button>
+      <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">View Services</button>
+    </div>
+    <div class="hero-badge">
+      <span class="star">★★★★★</span>
+      Rated 4.9 · 300+ happy clients in Toronto
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────
+     SERVICES
+──────────────────────────────────────── -->
+<section class="services-strip" id="services">
+  <p class="section-label">What We Offer</p>
+  <h2 class="section-title">Our Services &amp; Pricing</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">💅</div>
+      <div class="service-name">Classic Manicure</div>
+      <div class="service-desc">Shape, buff, cuticle care, and a flawless polish finish. The perfect weekly treat.</div>
+      <div class="service-price">From $35</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <div class="service-name">Gel Manicure</div>
+      <div class="service-desc">Long-lasting gel polish cured under UV — stays chip-free for up to three weeks.</div>
+      <div class="service-price">From $55</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌸</div>
+      <div class="service-name">Dip Powder</div>
+      <div class="service-desc">Durable, lightweight colour with no UV lamp required. Lasts 3–4 weeks.</div>
+      <div class="service-price">From $60</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💎</div>
+      <div class="service-name">Acrylic Set</div>
+      <div class="service-desc">Full sculptured acrylic enhancements for length, strength, and flawless shape.</div>
+      <div class="service-price">From $75</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🦋</div>
+      <div class="service-name">Pedicure</div>
+      <div class="service-desc">Relaxing soak, exfoliation, massage, and polish. Classic or Spa options available.</div>
+      <div class="service-price">From $55</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <div class="service-name">Nail Art</div>
+      <div class="service-desc">Custom designs — florals, chrome, French tips, ombre, gems &amp; more. Priced per nail.</div>
+      <div class="service-price">From $5 / nail</div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────
+     INFO / HOURS / LOCATION
+──────────────────────────────────────── -->
+<section class="info-section" id="about">
+  <div class="info-inner">
+    <div class="info-text">
+      <p class="section-label">The Studio</p>
+      <h2 class="section-title">A Little Slice of Calm in the City</h2>
+      <p class="info-body">
+        Lumi Nail Studio was founded with one belief: every visit should leave you feeling refreshed, confident, and completely you. Our licensed technicians use only premium, non-toxic products in a calm, airy space designed to be your escape.
+      </p>
+      <ul class="detail-list">
+        <li>
+          <span class="detail-icon">📍</span>
+          <span><strong>842 Queen St W, Unit 2</strong><br/>Toronto, ON &nbsp;M6J 1G3<br/>Street parking available on Beaconsfield Ave</span>
+        </li>
+        <li>
+          <span class="detail-icon">🚇</span>
+          <span>5 min walk from Osgoode Station (Line 1) &amp; accessible via the 501 Queen streetcar</span>
+        </li>
+        <li>
+          <span class="detail-icon">📞</span>
+          <span>(416) 555-0192 &nbsp;·&nbsp; hello@luminailstudio.ca</span>
+        </li>
+        <li>
+          <span class="detail-icon">🎁</span>
+          <span>Gift cards available in-studio and online — perfect for any occasion</span>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="hours-card">
+        <h3>Studio Hours</h3>
+        <div class="hours-row"><span class="day">Monday</span><span>10:00 AM – 7:00 PM</span></div>
+        <div class="hours-row"><span class="day">Tuesday</span><span>10:00 AM – 7:00 PM</span></div>
+        <div class="hours-row"><span class="day">Wednesday</span><span>10:00 AM – 7:00 PM</span></div>
+        <div class="hours-row"><span class="day">Thursday</span><span>10:00 AM – 8:00 PM</span></div>
+        <div class="hours-row"><span class="day">Friday</span><span>10:00 AM – 8:00 PM</span></div>
+        <div class="hours-row"><span class="day">Saturday</span><span>9:00 AM – 6:00 PM</span></div>
+        <div class="hours-row"><span class="day">Sunday</span><span class="closed">Closed</span></div>
+      </div>
+      <div class="map-placeholder">
+        <span class="pin">📍</span>
+        <span>842 Queen St W, Toronto</span>
+        <span style="font-size:11px;opacity:.7">Queen West · 5 min from Osgoode Station</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────
+     TESTIMONIALS
+──────────────────────────────────────── -->
+<section class="testimonials">
+  <p class="section-label">Client Love</p>
+  <h2 class="section-title">What Our Clients Say</h2>
+  <div class="testimonials-grid">
+    <div class="tcard">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"Absolutely obsessed with my gel set — it's been three weeks and still no chips. The studio is gorgeous and the staff made me feel so welcome."</p>
+      <div class="tcard-author">— Priya M., Parkdale</div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"I've been to a lot of nail salons in Toronto and Lumi is by far the best. The dip powder lasts forever and the nail art is next-level."</p>
+      <div class="tcard-author">— Camille D., Annex</div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"Booked a spa pedicure before my vacation and it was the best hour of my week. Clean, relaxing, and my toes looked stunning the whole trip."</p>
+      <div class="tcard-author">— Sarah K., Liberty Village</div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────
+     FOOTER
+──────────────────────────────────────── -->
+<footer id="contact">
+  <div class="footer-logo">Lumi Nail Studio</div>
+  <div>842 Queen St W, Toronto, ON · (416) 555-0192</div>
+  <div>© 2025 Lumi Nail Studio. All rights reserved.</div>
+</footer>
+
+<!-- ──────────────────────────────────────
+     CHAT LAUNCHER BUBBLE
+──────────────────────────────────────── -->
+<button class="chat-launcher" id="chatLauncher" onclick="toggleChat()" aria-label="Open chat">
+  <div class="chat-notif" id="chatNotif">1</div>
+  <!-- chat icon -->
+  <svg class="icon-chat" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 2H4a2 2 0 00-2 2v18l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2zm-2 10H6v-2h12v2zm0-4H6V6h12v2z"/>
+  </svg>
+  <!-- close icon -->
+  <svg class="icon-close" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+  </svg>
+</button>
+
+<!-- ──────────────────────────────────────
+     CHAT WINDOW
+──────────────────────────────────────── -->
+<div class="chat-window" id="chatWindow" role="dialog" aria-label="Lumi Assistant Chat">
+  <div class="chat-header">
+    <div class="chat-avatar">💅</div>
+    <div class="chat-header-info">
+      <div class="chat-header-name">Lumi Assistant</div>
+      <div class="chat-header-status"><span class="status-dot"></span> Online now</div>
+    </div>
+    <button class="chat-close-btn" onclick="toggleChat()" aria-label="Close chat">✕</button>
+  </div>
+
+  <div class="chat-messages" id="chatMessages"></div>
+
+  <div class="chips-row" id="chipsRow"></div>
+
+  <div class="chat-input-area">
+    <input
+      type="text"
+      class="chat-input"
+      id="chatInput"
+      placeholder="Type a message…"
+      autocomplete="off"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendUserMessage();}"
+    />
+    <button class="send-btn" onclick="sendUserMessage()" aria-label="Send">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+  <div class="chat-powered">Powered by Lumi AI · Built by <strong style="color:var(--rose-gold)">Lifelutions</strong></div>
+</div>
+
+<!-- ──────────────────────────────────────
+     CHATBOT SCRIPT
+──────────────────────────────────────── -->
+<script>
+// ─── State ───────────────────────────────────────────────
+let chatOpen = false;
+let greeted  = false;
+let typingTimer = null;
+
+// Booking flow state
+const booking = {
+  active: false,
+  step: null,   // 'service' | 'date' | 'time' | 'name' | 'confirm'
+  service: null,
+  date: null,
+  time: null,
+  name: null,
+};
+
+// ─── Knowledge base ──────────────────────────────────────
+const SERVICES = {
+  manicure:  { name: 'Classic Manicure',  price: '$35',  duration: '30–45 min' },
+  gel:       { name: 'Gel Manicure',      price: '$55',  duration: '50–60 min' },
+  dip:       { name: 'Dip Powder',        price: '$60',  duration: '50–65 min' },
+  acrylic:   { name: 'Acrylic Set',       price: '$75',  duration: '75–90 min' },
+  pedicure:  { name: 'Pedicure',          price: '$55',  duration: '45–60 min' },
+  'spa pedicure': { name: 'Spa Pedicure', price: '$70',  duration: '60–75 min' },
+  'nail art':{ name: 'Nail Art',          price: '$5+/nail', duration: 'Varies' },
+  removal:   { name: 'Gel/Acrylic Removal', price: '$20', duration: '20–30 min' },
+};
+
+const HOURS = [
+  { day: 'Monday',    open: '10:00 AM', close: '7:00 PM' },
+  { day: 'Tuesday',   open: '10:00 AM', close: '7:00 PM' },
+  { day: 'Wednesday', open: '10:00 AM', close: '7:00 PM' },
+  { day: 'Thursday',  open: '10:00 AM', close: '8:00 PM' },
+  { day: 'Friday',    open: '10:00 AM', close: '8:00 PM' },
+  { day: 'Saturday',  open: '9:00 AM',  close: '6:00 PM' },
+  { day: 'Sunday',    open: null,       close: null },
+];
+
+const TIMES = ['10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM',
+  '1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM','5:00 PM'];
+
+// ─── Chat open/close ─────────────────────────────────────
+function openChat() {
+  if (!chatOpen) toggleChat();
+}
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  const win      = document.getElementById('chatWindow');
+  const launcher = document.getElementById('chatLauncher');
+  const notif    = document.getElementById('chatNotif');
+
+  if (chatOpen) {
+    win.classList.add('visible');
+    launcher.classList.add('open');
+    notif.style.display = 'none';
+    if (!greeted) {
+      greeted = true;
+      setTimeout(showGreeting, 320);
+    }
+    setTimeout(() => document.getElementById('chatInput').focus(), 350);
+  } else {
+    win.classList.remove('visible');
+    launcher.classList.remove('open');
+  }
+}
+
+// ─── Greeting ────────────────────────────────────────────
+function showGreeting() {
+  showTyping(900, () => {
+    addBotMessage("Hi there! 💅 Welcome to <strong>Lumi Nail Studio</strong>. I'm your AI assistant — I can answer any questions about our services, pricing, or availability.\n\nI can also <strong>book an appointment</strong> for you right now! What can I help you with?");
+    setChips(['Book an appointment', 'See services & prices', 'Our hours', 'Where are you located?', 'Walk-in available?']);
+  });
+}
+
+// ─── Message rendering ───────────────────────────────────
+function addBotMessage(html) {
+  const msgs = document.getElementById('chatMessages');
+  const wrap = document.createElement('div');
+  wrap.className = 'msg bot';
+  wrap.innerHTML = `
+    <div class="msg-avatar">💅</div>
+    <div class="bubble">${html}</div>
+  `;
+  msgs.appendChild(wrap);
+  scrollBottom();
+}
+
+function addUserMessage(text) {
+  const msgs = document.getElementById('chatMessages');
+  const wrap = document.createElement('div');
+  wrap.className = 'msg user';
+  wrap.innerHTML = `<div class="bubble">${escHtml(text)}</div>`;
+  msgs.appendChild(wrap);
+  scrollBottom();
+}
+
+function showTyping(delay, callback) {
+  const msgs = document.getElementById('chatMessages');
+  const ind  = document.createElement('div');
+  ind.className = 'msg bot typing-indicator';
+  ind.id = 'typingIndicator';
+  ind.innerHTML = `
+    <div class="msg-avatar">💅</div>
+    <div class="typing-dots">
+      <div class="dot-anim"></div>
+      <div class="dot-anim"></div>
+      <div class="dot-anim"></div>
+    </div>`;
+  msgs.appendChild(ind);
+  scrollBottom();
+  setTimeout(() => {
+    ind.remove();
+    callback();
+  }, delay);
+}
+
+function setChips(chips) {
+  const row = document.getElementById('chipsRow');
+  row.innerHTML = '';
+  chips.forEach(label => {
+    const btn = document.createElement('button');
+    btn.className = 'chip';
+    btn.textContent = label;
+    btn.onclick = () => handleUserInput(label);
+    row.appendChild(btn);
+  });
+}
+
+function clearChips() {
+  document.getElementById('chipsRow').innerHTML = '';
+}
+
+function scrollBottom() {
+  const msgs = document.getElementById('chatMessages');
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ─── Input handling ──────────────────────────────────────
+function sendUserMessage() {
+  const input = document.getElementById('chatInput');
+  const text  = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  handleUserInput(text);
+}
+
+function handleUserInput(text) {
+  clearChips();
+  addUserMessage(text);
+
+  // If in booking flow, route there first
+  if (booking.active) {
+    handleBookingFlow(text);
+    return;
+  }
+
+  const lower = text.toLowerCase();
+
+  // Booking intent
+  if (/book|appoint|schedul|reserv/i.test(lower)) {
+    startBooking();
+    return;
+  }
+
+  // Services + pricing
+  if (/service|menu|what.*offer|pric|cost|how much|rate/i.test(lower)) {
+    showServices();
+    return;
+  }
+
+  // Specific services
+  if (/manicur/i.test(lower) && !/gel|dip|acryl/i.test(lower)) {
+    showServiceDetail('manicure'); return;
+  }
+  if (/gel/i.test(lower) && !/dip|acryl/i.test(lower)) {
+    if (/vs|differ|better|compar/i.test(lower)) { showGelVsDip(); return; }
+    showServiceDetail('gel'); return;
+  }
+  if (/dip/i.test(lower)) {
+    if (/vs|differ|better|compar/i.test(lower)) { showGelVsDip(); return; }
+    showServiceDetail('dip'); return;
+  }
+  if (/acryl/i.test(lower)) {
+    showServiceDetail('acrylic'); return;
+  }
+  if (/pedicur/i.test(lower)) {
+    showServiceDetail('pedicure'); return;
+  }
+  if (/nail art|design|custom/i.test(lower)) {
+    showServiceDetail('nail art'); return;
+  }
+  if (/remov/i.test(lower)) {
+    showServiceDetail('removal'); return;
+  }
+
+  // Comparisons
+  if (/gel.*vs.*dip|dip.*vs.*gel/i.test(lower)) {
+    showGelVsDip(); return;
+  }
+  if (/gel.*vs.*acryl|acryl.*vs.*gel/i.test(lower)) {
+    showGelVsAcrylic(); return;
+  }
+  if (/how long|duration|time.*tak|last/i.test(lower)) {
+    showDurations(); return;
+  }
+
+  // Hours
+  if (/hour|open|clos|when.*open/i.test(lower)) {
+    showHours(); return;
+  }
+
+  // Location / parking / transit
+  if (/where|address|locat|park|transit|subway|streetcar|ttc|direction/i.test(lower)) {
+    showLocation(); return;
+  }
+
+  // Walk-ins
+  if (/walk.in|walk in|no appoint/i.test(lower)) {
+    showWalkIns(); return;
+  }
+
+  // Gift cards
+  if (/gift/i.test(lower)) {
+    showGiftCards(); return;
+  }
+
+  // Greetings
+  if (/^(hi|hello|hey|good\s*(morning|afternoon|evening)|hiya|howdy)/i.test(lower)) {
+    showTyping(600, () => {
+      addBotMessage("Hey! 👋 So lovely to have you here. How can I help today?");
+      setChips(['Book an appointment','Services & prices','Hours','Location']);
+    });
+    return;
+  }
+
+  // Thanks
+  if (/thank|thanks|thx/i.test(lower)) {
+    showTyping(500, () => {
+      addBotMessage("Of course — happy to help! ✨ Is there anything else I can assist you with?");
+      setChips(['Book an appointment','Services & prices','Hours']);
+    });
+    return;
+  }
+
+  // Fallback
+  showTyping(700, () => {
+    addBotMessage("I'm not quite sure about that one, but I'd love to help! Here are some things I can answer:");
+    setChips(['Book an appointment','Services & prices','Hours','Location','Walk-ins?','Gift cards']);
+  });
+}
+
+// ─── Service responses ───────────────────────────────────
+function showServices() {
+  showTyping(900, () => {
+    addBotMessage(`Here's a quick overview of our services at Lumi:<br/><br/>
+<ul class="service-list">
+  <li>💅 <strong>Classic Manicure</strong> — from <strong>$35</strong></li>
+  <li>✨ <strong>Gel Manicure</strong> — from <strong>$55</strong></li>
+  <li>🌸 <strong>Dip Powder</strong> — from <strong>$60</strong></li>
+  <li>💎 <strong>Acrylic Set</strong> — from <strong>$75</strong></li>
+  <li>🦋 <strong>Pedicure</strong> — from <strong>$55</strong> (Spa: $70)</li>
+  <li>🎨 <strong>Nail Art</strong> — from <strong>$5/nail</strong></li>
+  <li>🗑️ <strong>Gel/Acrylic Removal</strong> — <strong>$20</strong></li>
+</ul><br/>
+Want to know more about any service, or ready to book?`);
+    setChips(['Book now','Gel vs Dip — which is better?','How long do appointments take?','Acrylic details']);
+  });
+}
+
+function showServiceDetail(key) {
+  const s = SERVICES[key];
+  if (!s) return;
+  showTyping(750, () => {
+    addBotMessage(`Here's everything about our <strong>${s.name}</strong>:<br/><br/>
+💰 <strong>Price:</strong> ${s.price}<br/>
+⏱️ <strong>Duration:</strong> ${s.duration}<br/><br/>
+Ready to book a <strong>${s.name}</strong> appointment?`);
+    setChips(['Yes, book it!','Back to all services','Compare service types']);
+  });
+}
+
+function showGelVsDip() {
+  showTyping(1100, () => {
+    addBotMessage(`Great question — both are popular at Lumi! Here's the quick breakdown:<br/><br/>
+<strong>✨ Gel ($55+)</strong><br/>
+• Cured under UV light, glossy finish<br/>
+• Lasts ~2–3 weeks<br/>
+• Flexible feel, great for natural nail length<br/><br/>
+<strong>🌸 Dip Powder ($60+)</strong><br/>
+• No UV lamp needed<br/>
+• Lasts 3–4 weeks (more durable)<br/>
+• Thicker, stronger feel — great for brittle nails<br/><br/>
+Both look gorgeous! If you want <em>longer wear</em>, dip is your friend. If you prefer a <em>lighter, more flexible</em> finish, go gel. 💅`);
+    setChips(['Book gel manicure','Book dip powder','Tell me about acrylics','See all services']);
+  });
+}
+
+function showGelVsAcrylic() {
+  showTyping(1100, () => {
+    addBotMessage(`Both are excellent options — here's how they compare:<br/><br/>
+<strong>✨ Gel ($55+)</strong><br/>
+• Natural-looking, flexible<br/>
+• Works on your own nails<br/>
+• Lasts 2–3 weeks<br/><br/>
+<strong>💎 Acrylic ($75+)</strong><br/>
+• Best for adding significant length & strength<br/>
+• Very durable — ideal for nail extensions<br/>
+• Requires fills every 2–3 weeks<br/><br/>
+If you want <em>length and drama</em>, acrylics are the move. For a natural enhancement, gel wins. 💅`);
+    setChips(['Book gel manicure','Book acrylic set','See all services']);
+  });
+}
+
+function showDurations() {
+  showTyping(850, () => {
+    addBotMessage(`Here's roughly how long each service takes at Lumi:<br/><br/>
+<ul class="service-list">
+  <li>💅 Classic Manicure — <strong>30–45 min</strong></li>
+  <li>✨ Gel Manicure — <strong>50–60 min</strong></li>
+  <li>🌸 Dip Powder — <strong>50–65 min</strong></li>
+  <li>💎 Acrylic Set — <strong>75–90 min</strong></li>
+  <li>🦋 Pedicure — <strong>45–60 min</strong></li>
+  <li>🎨 Nail Art — varies by design</li>
+  <li>🗑️ Removal — <strong>20–30 min</strong></li>
+</ul>`);
+    setChips(['Book an appointment','Services & prices']);
+  });
+}
+
+// ─── Hours response ───────────────────────────────────────
+function showHours() {
+  showTyping(700, () => {
+    const rows = HOURS.map(h =>
+      `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(201,149,106,.12)">
+        <span style="font-weight:500">${h.day}</span>
+        <span style="${!h.open ? 'color:#c0847a' : ''}">${h.open ? h.open + ' – ' + h.close : 'Closed'}</span>
+       </div>`
+    ).join('');
+    addBotMessage(`We're open most days — here are our current hours:<br/><br/>${rows}<br/>Would you like to book an appointment?`);
+    setChips(['Book now','Location & parking','Walk-ins?']);
+  });
+}
+
+// ─── Location response ───────────────────────────────────
+function showLocation() {
+  showTyping(700, () => {
+    addBotMessage(`We're located at:<br/><br/>
+<strong>📍 842 Queen St W, Unit 2<br/>Toronto, ON M6J 1G3</strong><br/><br/>
+🚇 <strong>Transit:</strong> 5 min walk from Osgoode Station (Line 1), or hop on the 501 Queen streetcar.<br/><br/>
+🚗 <strong>Parking:</strong> Street parking is available on Beaconsfield Ave, just around the corner.<br/><br/>
+Need directions or want to book your visit?`);
+    setChips(['Book an appointment','Our hours','Walk-ins?']);
+  });
+}
+
+// ─── Walk-ins ─────────────────────────────────────────────
+function showWalkIns() {
+  showTyping(700, () => {
+    addBotMessage(`We do <strong>welcome walk-ins</strong> whenever we have availability — but to guarantee your spot (especially on weekends), we recommend booking ahead.<br/><br/>
+Want me to help you secure an appointment right now? It only takes a minute! 💅`);
+    setChips(['Yes, book now!','Our hours','Services & prices']);
+  });
+}
+
+// ─── Gift cards ───────────────────────────────────────────
+function showGiftCards() {
+  showTyping(700, () => {
+    addBotMessage(`🎁 <strong>Gift cards are available!</strong><br/><br/>
+You can pick them up <strong>in-studio</strong> during business hours, or purchase them <strong>online</strong> through our website. They're available in any amount and make the perfect gift for birthdays, anniversaries, bridal parties — or just because! 💕`);
+    setChips(['Book an appointment','Our hours','Location']);
+  });
+}
+
+// ─── Booking flow ─────────────────────────────────────────
+function startBooking() {
+  booking.active  = true;
+  booking.step    = 'service';
+  booking.service = null;
+  booking.date    = null;
+  booking.time    = null;
+  booking.name    = null;
+
+  showTyping(700, () => {
+    addBotMessage("Wonderful! Let's get you booked in. 🗓️<br/><br/>Which service would you like to book?");
+    setChips(['Classic Manicure ($35)','Gel Manicure ($55)','Dip Powder ($60)','Acrylic Set ($75)','Pedicure ($55)','Nail Art','Removal ($20)']);
+  });
+}
+
+function handleBookingFlow(text) {
+  const lower = text.toLowerCase();
+
+  if (booking.step === 'service') {
+    // Map input to a service
+    let svc = null;
+    if (/classic|regular manicur/i.test(lower) || /manicur/i.test(lower) && !/gel|dip|acryl/i.test(lower)) svc = 'Classic Manicure';
+    else if (/gel/i.test(lower))     svc = 'Gel Manicure';
+    else if (/dip/i.test(lower))     svc = 'Dip Powder';
+    else if (/acryl/i.test(lower))   svc = 'Acrylic Set';
+    else if (/pedicur/i.test(lower)) svc = 'Pedicure';
+    else if (/nail art|design/i.test(lower)) svc = 'Nail Art';
+    else if (/remov/i.test(lower))   svc = 'Gel/Acrylic Removal';
+    // Try stripping price from chip label
+    else {
+      const stripped = text.replace(/\s*\(.*\)\s*/, '').trim();
+      svc = stripped || null;
+    }
+
+    if (!svc) {
+      showTyping(500, () => {
+        addBotMessage("I didn't quite catch that — could you pick one of the services below? 😊");
+        setChips(['Classic Manicure','Gel Manicure','Dip Powder','Acrylic Set','Pedicure','Nail Art','Removal']);
+      });
+      return;
+    }
+
+    booking.service = svc;
+    booking.step = 'date';
+
+    showTyping(700, () => {
+      addBotMessage(`Great choice — <strong>${svc}</strong> it is! 💅<br/><br/>What date works for you? (e.g. "this Saturday", "June 14", "tomorrow")`);
+      // Generate next few date suggestions
+      const days = getUpcomingDays();
+      setChips(days);
+    });
+    return;
+  }
+
+  if (booking.step === 'date') {
+    if (!text || text.length < 2) {
+      showTyping(400, () => addBotMessage("Could you share a date? For example, \"this Saturday\" or \"June 20\".") );
+      return;
+    }
+    booking.date = text;
+    booking.step = 'time';
+    showTyping(700, () => {
+      addBotMessage(`Perfect — <strong>${text}</strong>! 🗓️<br/><br/>What time would you prefer?`);
+      setChips(['10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM']);
+    });
+    return;
+  }
+
+  if (booking.step === 'time') {
+    const timeMatch = text.match(/\d{1,2}(?::\d{2})?\s*(?:am|pm)?/i);
+    const timeText = timeMatch ? text : null;
+    if (!timeText) {
+      showTyping(400, () => addBotMessage("Could you give me a time? For example, \"2:00 PM\" or \"11 AM\".") );
+      return;
+    }
+    booking.time = timeText;
+    booking.step = 'name';
+    showTyping(650, () => {
+      addBotMessage(`${timeText} — perfect! Almost done. 😊<br/><br/>What's the name to put the booking under?`);
+      clearChips();
+    });
+    return;
+  }
+
+  if (booking.step === 'name') {
+    if (!text || text.length < 2) {
+      showTyping(400, () => addBotMessage("Could you share your name so I can complete the booking?") );
+      return;
+    }
+    booking.name = text;
+    booking.step = 'confirm';
+    showTyping(900, () => {
+      addBotMessage(`Almost there! Here's your booking summary:<br/><br/>
+💅 <strong>Service:</strong> ${booking.service}<br/>
+📅 <strong>Date:</strong> ${booking.date}<br/>
+⏰ <strong>Time:</strong> ${booking.time}<br/>
+👤 <strong>Name:</strong> ${booking.name}<br/><br/>
+Shall I confirm this booking?`);
+      setChips(['Yes, confirm!','No, make a change']);
+    });
+    return;
+  }
+
+  if (booking.step === 'confirm') {
+    if (/yes|confirm|looks good|perfect|book it|go ahead|sure/i.test(lower)) {
+      booking.active = false;
+      booking.step   = null;
+      showTyping(1100, () => {
+        addBotMessage(`✅ <strong>You're all booked!</strong> We'll see you at Lumi Nail Studio, ${booking.name}! 🎉<br/><br/>
+📍 <strong>842 Queen St W, Unit 2, Toronto</strong><br/>
+📅 <strong>${booking.date}</strong> at <strong>${booking.time}</strong><br/><br/>
+A confirmation has been sent to your phone. If you need to reschedule or have any questions, call us at <strong>(416) 555-0192</strong>. Can't wait to see you! 💕`);
+        setChips(['Book another service','Our services','Hours & location']);
+      });
+    } else if (/no|change|edit|different|wrong/i.test(lower)) {
+      booking.active = true;
+      booking.step   = 'service';
+      booking.service = null;
+      showTyping(500, () => {
+        addBotMessage("No worries — let's start fresh! Which service would you like?");
+        setChips(['Classic Manicure ($35)','Gel Manicure ($55)','Dip Powder ($60)','Acrylic Set ($75)','Pedicure ($55)','Nail Art','Removal ($20)']);
+      });
+    } else {
+      showTyping(400, () => {
+        addBotMessage("Should I go ahead and confirm your booking?");
+        setChips(['Yes, confirm!','No, make a change']);
+      });
+    }
+    return;
+  }
+}
+
+// ─── Helpers ─────────────────────────────────────────────
+function getUpcomingDays() {
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const result = [];
+  const today = new Date();
+  for (let i = 1; i <= 7; i++) {
+    const d = new Date(today);
+    d.setDate(today.getDate() + i);
+    const dayName = days[d.getDay()];
+    if (dayName === 'Sunday') continue; // closed
+    const label = i === 1 ? 'Tomorrow' : dayName + ', ' + months[d.getMonth()] + ' ' + d.getDate();
+    result.push(label);
+    if (result.length >= 5) break;
+  }
+  return result;
+}
+</script>
+
+</body>
+</html>
