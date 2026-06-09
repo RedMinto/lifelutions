@@ -93,8 +93,8 @@ function demoReply(msg) {
     return { text: "Awesome — easiest is to drop your details in the form on this page, or email <a href='mailto:contact.lifelutions@gmail.com'>contact.lifelutions@gmail.com</a> and I'll reply within a few hours. What's the best email to reach you?", options: ["See pricing", "What do you build?"] };
   if (has('hi', 'hello', 'hey', 'yo ', 'sup'))
     return { text: "Hey! 👋 I can help with AI chatbots, websites, automations, pricing, or booking a call. What are you working on?", options: ["What do you build?", "How much?", "How fast?"] };
-  if (has('who', 'you guys', 'about', 'experience', 'mateu'))
-    return { text: "Lifelutions is a Toronto-based AI &amp; automation studio (that's Mateu 👋). I build AI agents, automations, and websites — bringing real engineering depth to small-business projects, with fixed prices and 2–3 day delivery.", options: ["What do you build?", "Book a call"] };
+  if (has('who', 'you guys', 'about', 'experience', 'matthew'))
+    return { text: "Lifelutions is a Toronto-based AI &amp; automation studio (that's Matthew 👋). I build AI agents, automations, and websites — bringing real engineering depth to small-business projects, with fixed prices and 2–3 day delivery.", options: ["What do you build?", "Book a call"] };
 
   return { text: "Great question! I can help with AI chatbots, websites, automations, pricing, delivery times, or booking a call. The best next step is usually a free 15-min call — want me to point you to the form?", options: ["Book a call", "See pricing", "What do you build?"] };
 }
