@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hair+Co. Salon | Scarborough, Toronto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --coral:       #e07b6a;
+      --coral-light: #f0a898;
+      --coral-dark:  #c05a4a;
+      --sand:        #f7f0ea;
+      --warm-white:  #fdfaf7;
+      --charcoal:    #2c2825;
+      --mid:         #5a524e;
+      --muted:       #9a8e89;
+      --cream:       #efe7de;
+      --border:      #e5dbd4;
+      --sans:        'Manrope', sans-serif;
+      --serif:       'Cormorant Garamond', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--charcoal);
+      background: var(--warm-white);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    /* ── PROMO BANNER ── */
+    #promo-banner {
+      background: var(--charcoal);
+      color: #f0c9c2;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      line-height: 1.5;
+    }
+    #promo-banner a {
+      color: var(--coral-light);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 41px;
+      z-index: 900;
+      background: rgba(253, 250, 247, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--coral); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--coral); }
+    .nav-cta {
+      background: var(--coral);
+      color: #fff !important;
+      padding: 9px 22px;
+      border-radius: 50px;
+      font-size: 0.83rem !important;
+      letter-spacing: 0.05em !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--coral-dark) !important; color: #fff !important; }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 105px;
+      left: 0; right: 0;
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 5% 32px;
+      z-index: 850;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-size: 1.1rem;
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+    .mobile-menu .mob-cta {
+      background: var(--coral);
+      color: #fff;
+      text-align: center;
+      padding: 14px;
+      border-radius: 50px;
+      border-bottom: none;
+      font-weight: 600;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, #f7f0ea 0%, #ede0d6 40%, #e2cfc5 100%);
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -80px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(224,123,106,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -60px;
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(224,123,106,0.10) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 700px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--coral-dark);
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px; height: 1.5px;
+      background: var(--coral);
+    }
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 500;
+      line-height: 1.12;
+      color: var(--charcoal);
+      margin-bottom: 22px;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--coral-dark);
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 520px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .hero-rating {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 36px;
+      font-size: 0.9rem;
+      color: var(--mid);
+    }
+    .stars { color: #f5a623; font-size: 1rem; letter-spacing: 1px; }
+    .hero-rating strong { color: var(--charcoal); }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--coral);
+      color: #fff;
+      padding: 15px 34px;
+      border-radius: 50px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--coral-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--charcoal);
+      padding: 15px 34px;
+      border-radius: 50px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border: 1.5px solid var(--charcoal);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-1px); }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 90px 5%; }
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      color: var(--mid);
+      font-size: 1rem;
+      max-width: 500px;
+      margin-bottom: 54px;
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--warm-white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--sand);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 26px;
+      transition: box-shadow 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--coral);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .service-card:hover { box-shadow: 0 8px 32px rgba(44,40,37,0.1); transform: translateY(-3px); }
+    .service-card:hover::after { opacity: 1; }
+    .service-icon {
+      font-size: 1.7rem;
+      margin-bottom: 14px;
+    }
+    .service-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--mid);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .service-price {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--coral-dark);
+    }
+    .service-price span {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--sand); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .gallery-tile {
+      border-radius: 14px;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-tile:nth-child(1) { background: linear-gradient(160deg, #d4a79a 0%, #b8736a 50%, #8a4a42 100%); }
+    .gallery-tile:nth-child(2) { background: linear-gradient(160deg, #c9b49a 0%, #a8876a 50%, #7a5a42 100%); }
+    .gallery-tile:nth-child(3) { background: linear-gradient(160deg, #e8d4c8 0%, #d4b0a0 50%, #b88070 100%); }
+    .gallery-tile:nth-child(4) { background: linear-gradient(160deg, #b8c4a8 0%, #8a9e78 50%, #607050 100%); }
+    .gallery-tile:nth-child(5) { background: linear-gradient(160deg, #dac4b4 0%, #c4a088 50%, #9a7060 100%); }
+    .gallery-tile:nth-child(6) { background: linear-gradient(160deg, #c8b8d8 0%, #a898b8 50%, #887090 100%); }
+    .gallery-label {
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(6px);
+      border-radius: 8px;
+      padding: 7px 13px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── REVIEWS ── */
+    #reviews { background: var(--warm-white); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .review-card {
+      background: var(--sand);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px 28px;
+    }
+    .review-stars { font-size: 1rem; color: #f5a623; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--mid);
+      line-height: 1.72;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+    .av-a { background: linear-gradient(135deg, #e07b6a, #c05a4a); }
+    .av-b { background: linear-gradient(135deg, #8a9e78, #607050); }
+    .av-c { background: linear-gradient(135deg, #a898b8, #887090); }
+    .review-name { font-weight: 700; font-size: 0.92rem; color: var(--charcoal); }
+    .review-meta { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── BOOKING ── */
+    #booking { background: var(--sand); }
+    .booking-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .booking-info h2 { font-family: var(--serif); font-size: clamp(1.9rem,4vw,2.6rem); font-weight: 500; color: var(--charcoal); margin-bottom: 16px; line-height: 1.2; }
+    .booking-info p { color: var(--mid); font-size: 0.97rem; margin-bottom: 28px; line-height: 1.7; }
+    .booking-perks { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .booking-perks li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.92rem; color: var(--mid);
+    }
+    .perk-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--coral); flex-shrink: 0;
+    }
+    .booking-form {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+    .form-title {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+    .form-group input,
+    .form-group select {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: var(--sans);
+      font-size: 0.93rem;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      transition: border-color 0.2s;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus { border-color: var(--coral); }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239a8e89' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .btn-submit {
+      width: 100%;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      padding: 15px;
+      border-radius: 50px;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 6px;
+    }
+    .btn-submit:hover { background: var(--coral-dark); transform: translateY(-1px); }
+    .success-msg {
+      display: none;
+      background: #edf7ed;
+      border: 1px solid #a5d6a7;
+      border-radius: 12px;
+      padding: 18px 20px;
+      color: #2e7d32;
+      font-size: 0.93rem;
+      font-weight: 500;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: #c8bdb8;
+      padding: 60px 5% 36px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 28px;
+    }
+    .footer-brand .f-logo {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .footer-brand .f-logo span { color: var(--coral-light); }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--coral-light);
+      margin-bottom: 18px;
+    }
+    .footer-col p, .footer-col address {
+      font-size: 0.88rem;
+      font-style: normal;
+      line-height: 1.85;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .footer-bottom a { color: var(--coral-light); text-decoration: none; }
+    .footer-bottom a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .booking-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      #hero { min-height: 75vh; padding: 60px 5%; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      #promo-banner { font-size: 11px; }
+    }
+
+    @media (max-width: 420px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── PROMO BANNER ── -->
+<div id="promo-banner">
+  ✨ Free sample site made for Hair+Co. Salon by Lifelutions — your real site live in 48h. Like it? <a href="mailto:contact.lifelutions@gmail.com">contact.lifelutions@gmail.com</a>
+</div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#hero" class="nav-logo">Hair<span>+Co.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" class="mob-link">Services</a>
+  <a href="#gallery" class="mob-link">Gallery</a>
+  <a href="#reviews" class="mob-link">Reviews</a>
+  <a href="#booking" class="mob-cta mob-link">Book Now</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Scarborough's Favourite Salon</div>
+    <h1 class="hero-h1">
+      Where Every Visit<br>Leaves You Feeling<br><em>Effortlessly Beautiful</em>
+    </h1>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <strong>4.4</strong>
+      <span>· 1,057 Google reviews</span>
+    </div>
+    <p class="hero-sub">
+      Expert cuts, colour, and styling at 1100 Ellesmere Rd — trusted by over a thousand clients in Scarborough and beyond.
+    </p>
+    <div class="hero-ctas">
+      <a href="#booking" class="btn-primary">Book an Appointment</a>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <p class="section-label">What We Offer</p>
+  <h2 class="section-title">Services & Pricing</h2>
+  <p class="section-sub">Transparent, fair pricing with no hidden fees. All services use professional-grade products.</p>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <div class="service-name">Women's Cut & Style</div>
+      <div class="service-desc">Precision cut tailored to your face shape, finished with a blowout and style.</div>
+      <div class="service-price">from $65 <span>CAD</span></div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">💈</div>
+      <div class="service-name">Men's Cut</div>
+      <div class="service-desc">Classic or contemporary cut with a hot towel finish and styling consultation.</div>
+      <div class="service-price">from $35 <span>CAD</span></div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">💨</div>
+      <div class="service-name">Blowout & Style</div>
+      <div class="service-desc">Salon-quality blowout for sleek, voluminous hair that lasts all day.</div>
+      <div class="service-price">from $55 <span>CAD</span></div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <div class="service-name">Full Colour</div>
+      <div class="service-desc">All-over colour transformation using ammonia-free, vibrant formulas.</div>
+      <div class="service-price">from $110 <span>CAD</span></div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🌿</div>
+      <div class="service-name">Highlights / Balayage</div>
+      <div class="service-desc">Sun-kissed balayage or classic foil highlights — hand-painted to perfection.</div>
+      <div class="service-price">from $150 <span>CAD</span></div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🌱</div>
+      <div class="service-name">Root Touch-Up</div>
+      <div class="service-desc">Quick, precise root coverage to keep your colour looking fresh between visits.</div>
+      <div class="service-price">from $80 <span>CAD</span></div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <div class="service-name">Keratin Treatment</div>
+      <div class="service-desc">Smooth and strengthen with a professional keratin treatment. Results last up to 4 months.</div>
+      <div class="service-price">from $200 <span>CAD</span></div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">👑</div>
+      <div class="service-name">Updo & Occasion Styling</div>
+      <div class="service-desc">Bridal, prom, or event-ready updos crafted to complement your look.</div>
+      <div class="service-price">from $90 <span>CAD</span></div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🧒</div>
+      <div class="service-name">Kids' Cut</div>
+      <div class="service-desc">Patient, gentle haircuts for children under 12. A stress-free experience for little ones.</div>
+      <div class="service-price">from $25 <span>CAD</span></div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">💧</div>
+      <div class="service-name">Deep Conditioning</div>
+      <div class="service-desc">Intensive moisture treatment to restore shine, strength, and softness to dry or damaged hair.</div>
+      <div class="service-price">from $45 <span>CAD</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section id="gallery">
+  <p class="section-label">Our Work</p>
+  <h2 class="section-title">Fresh Out of the Chair</h2>
+  <p class="section-sub">A glimpse at what we create — every look is a collaboration between stylist and client.</p>
+
+  <div class="gallery-grid">
+    <div class="gallery-tile">
+      <span class="gallery-label">Balayage Melt</span>
+    </div>
+    <div class="gallery-tile">
+      <span class="gallery-label">Rich Brunette</span>
+    </div>
+    <div class="gallery-tile">
+      <span class="gallery-label">Warm Copper Tone</span>
+    </div>
+    <div class="gallery-tile">
+      <span class="gallery-label">Textured Bob</span>
+    </div>
+    <div class="gallery-tile">
+      <span class="gallery-label">Toffee Highlights</span>
+    </div>
+    <div class="gallery-tile">
+      <span class="gallery-label">Bridal Updo</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── REVIEWS ── -->
+<section id="reviews">
+  <p class="section-label">What Clients Say</p>
+  <h2 class="section-title">1,000+ Reasons to Visit</h2>
+  <p class="section-sub">Don't take our word for it — here's what the Scarborough community has to say.</p>
+
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I've been coming here for almost two years and the consistency is unreal. My balayage always turns out exactly how I picture it — my stylist actually listens. Wouldn't go anywhere else."</p>
+      <div class="review-author">
+        <div class="review-avatar av-a">S</div>
+        <div>
+          <div class="review-name">Sandra M.</div>
+          <div class="review-meta">Scarborough · Google Review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Brought my daughter in for her first real haircut and they made it such a lovely experience. The team is warm, professional, and clearly passionate about what they do. Highly recommend."</p>
+      <div class="review-author">
+        <div class="review-avatar av-b">P</div>
+        <div>
+          <div class="review-name">Priya K.</div>
+          <div class="review-meta">Agincourt · Google Review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Got a keratin treatment done and I'm completely obsessed. My hair has never felt this smooth in my life. Great pricing for the quality — you can tell they use premium products."</p>
+      <div class="review-author">
+        <div class="review-avatar av-c">N</div>
+        <div>
+          <div class="review-name">Nicole T.</div>
+          <div class="review-meta">Scarborough · Google Review</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── BOOKING ── -->
+<section id="booking">
+  <div class="booking-wrap">
+    <div class="booking-info">
+      <p class="section-label">Ready to Book?</p>
+      <h2>Reserve Your Appointment</h2>
+      <p>Fill in your details and we'll confirm your appointment within a few hours. Walk-ins always welcome, but booking ahead guarantees your preferred time and stylist.</p>
+      <ul class="booking-perks">
+        <li><div class="perk-dot"></div>No deposit required to book</li>
+        <li><div class="perk-dot"></div>Free consultation included with every service</li>
+        <li><div class="perk-dot"></div>Flexible reschedule — up to 24 hours before</li>
+        <li><div class="perk-dot"></div>Complimentary coffee or tea while you wait</li>
+      </ul>
+    </div>
+
+    <div class="booking-form">
+      <div class="form-title">Book a Visit</div>
+      <form id="bookingForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">Full Name</label>
+            <input type="text" id="fname" placeholder="Jane Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(416) 555-0199" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="service">Service</label>
+          <select id="service" required>
+            <option value="" disabled selected>Select a service…</option>
+            <option>Women's Cut & Style — from $65</option>
+            <option>Men's Cut — from $35</option>
+            <option>Blowout & Style — from $55</option>
+            <option>Full Colour — from $110</option>
+            <option>Highlights / Balayage — from $150</option>
+            <option>Root Touch-Up — from $80</option>
+            <option>Keratin Treatment — from $200</option>
+            <option>Updo & Occasion Styling — from $90</option>
+            <option>Kids' Cut — from $25</option>
+            <option>Deep Conditioning — from $45</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" required />
+          </div>
+          <div class="form-group">
+            <label for="time">Preferred Time</label>
+            <input type="time" id="time" required min="09:00" max="19:00" />
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Request Appointment →</button>
+      </form>
+      <div class="success-msg" id="successMsg">
+        ✓ Request received! We'll confirm your appointment by phone or text within a few hours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+
+    <div class="footer-brand">
+      <div class="f-logo">Hair<span>+Co.</span></div>
+      <p>A neighbourhood salon dedicated to helping every client leave feeling confident, cared for, and completely themselves.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Visit Us</h4>
+      <address>
+        1100 Ellesmere Rd<br>
+        Scarborough, ON M1P 2X8<br>
+        Toronto, Canada<br><br>
+        📞 (416) 555-0100
+      </address>
+    </div>
+
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <p>
+        Mon – Fri &nbsp;&nbsp;9:00 am – 7:00 pm<br>
+        Saturday &nbsp;9:00 am – 6:00 pm<br>
+        Sunday &nbsp;&nbsp;&nbsp;10:00 am – 4:00 pm
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 Hair+Co. Salon · Scarborough, Toronto</span>
+    <span>Designed by <a href="mailto:contact.lifelutions@gmail.com">Lifelutions</a></span>
+  </div>
+</footer>
+
+<!-- ── JS ── -->
+<script>
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+  });
+
+  // Booking form
+  const form = document.getElementById('bookingForm');
+  const successMsg = document.getElementById('successMsg');
+
+  // Set min date to today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('date').setAttribute('min', today);
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const service = document.getElementById('service').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+
+    if (!name || !phone || !service || !date || !time) {
+      // Shake empty fields
+      [document.getElementById('fname'), document.getElementById('phone'),
+       document.getElementById('service'), document.getElementById('date'),
+       document.getElementById('time')].forEach(el => {
+        if (!el.value.trim()) {
+          el.style.borderColor = '#e07b6a';
+          el.style.animation = 'shake 0.3s ease';
+          setTimeout(() => {
+            el.style.animation = '';
+          }, 300);
+        }
+      });
+      return;
+    }
+
+    form.style.display = 'none';
+    successMsg.style.display = 'block';
+  });
+
+  // Shake animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Smooth scroll offset for sticky nav+banner
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 110;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

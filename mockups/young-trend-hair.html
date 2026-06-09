@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Young Trend Hair Studio | Scarborough's Premier Salon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1a1a1a;
+      --charcoal-mid: #2c2c2c;
+      --charcoal-light: #3d3d3d;
+      --accent: #ff5a5f;
+      --accent-dark: #e04448;
+      --accent-glow: rgba(255,90,95,0.18);
+      --off-white: #f9f7f5;
+      --muted: #a0a0a0;
+      --text: #e8e6e3;
+      --text-dim: #b0aeab;
+      --card-bg: #232323;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--charcoal);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── PROMO BANNER ── */
+    #promo-banner {
+      background: linear-gradient(90deg, #ff5a5f 0%, #c2185b 100%);
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      position: relative;
+      z-index: 1000;
+      line-height: 1.5;
+    }
+    #promo-banner a {
+      color: #fff;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    /* ── NAV ── */
+    #navbar {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(26,26,26,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 66px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn-nav {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 9px 22px;
+      border-radius: 50px;
+      font-size: 0.82rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.06em !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .btn-nav:hover { background: var(--accent-dark) !important; transform: translateY(-1px); }
+
+    #hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    #hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    #hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    #hamburger.open span:nth-child(2) { opacity: 0; }
+    #hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    #mobile-menu {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(22,22,22,0.98);
+      z-index: 800;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.6rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    #mobile-menu a:hover { color: var(--accent); }
+    #mobile-menu .btn-mobile {
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 40px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 80px 5% 60px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 75% 50%, rgba(255,90,95,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(255,90,95,0.07) 0%, transparent 60%),
+        linear-gradient(160deg, #1a1a1a 0%, #111 100%);
+      z-index: 0;
+    }
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(255,90,95,0.35);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+    .hero-badge::before { content: "★"; font-size: 0.9rem; }
+
+    h1.hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      font-weight: 900;
+      line-height: 1.07;
+      color: #fff;
+      margin-bottom: 22px;
+    }
+    h1.hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 1.08rem;
+      color: var(--text-dim);
+      max-width: 500px;
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+    .hero-stars {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      color: #ffd166;
+      font-weight: 600;
+    }
+    .hero-stars span { color: var(--text-dim); font-weight: 400; font-size: 0.85rem; }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 15px 34px;
+      border-radius: 50px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(255,90,95,0.35);
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,90,95,0.45); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      padding: 15px 34px;
+      border-radius: 50px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .hero-visual {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(260px, 36vw, 500px);
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #2d1a2e 0%, #1a1530 40%, #1c1015 100%);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,90,95,0.15);
+    }
+    .hero-visual-inner {
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,90,95,0.25) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 80% at 70% 80%, rgba(120,0,80,0.3) 0%, transparent 55%),
+        linear-gradient(180deg, #2a0e1e 0%, #120a10 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 32px;
+    }
+    .hero-visual-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .hero-visual-sub {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 6px;
+      font-weight: 600;
+    }
+    .hair-strands {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .strand {
+      position: absolute;
+      width: 2px;
+      border-radius: 1px;
+      background: linear-gradient(180deg, transparent 0%, rgba(255,90,95,0.6) 40%, rgba(180,0,100,0.4) 80%, transparent 100%);
+      animation: sway 4s ease-in-out infinite;
+    }
+    @keyframes sway {
+      0%, 100% { transform: rotate(-3deg) scaleY(1); }
+      50% { transform: rotate(3deg) scaleY(1.05); }
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 90px 5%; }
+    .section-label {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-dim);
+      max-width: 540px;
+      line-height: 1.75;
+      margin-bottom: 52px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: #161616; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 26px;
+      transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #c2185b);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .service-card:hover { border-color: rgba(255,90,95,0.35); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .service-desc {
+      font-size: 0.84rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .service-price {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--charcoal); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .gallery-tile {
+      aspect-ratio: 3/4;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery-tile:hover { transform: scale(1.02); }
+    .gallery-tile:hover .gallery-overlay { opacity: 1; }
+    .gallery-tile-bg {
+      width: 100%;
+      height: 100%;
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,90,95,0.18);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-label {
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    .gt1 { background: linear-gradient(155deg, #3b1f2b 0%, #1a0d1f 40%, #ff5a5f22 100%); }
+    .gt2 { background: linear-gradient(135deg, #1e1030 0%, #2d1535 50%, #ff80ab22 100%); }
+    .gt3 { background: linear-gradient(170deg, #0d1a2d 0%, #1a2040 50%, #5c6bc022 100%); }
+    .gt4 { background: linear-gradient(145deg, #1f1010 0%, #2e1212 50%, #ff5a5f33 100%); }
+    .gt5 { background: linear-gradient(130deg, #101f10 0%, #122512 50%, #66bb6a22 100%); }
+    .gt6 { background: linear-gradient(160deg, #1a1520 0%, #251830 50%, #ab47bc22 100%); }
+
+    /* hair accent inside tiles */
+    .gallery-tile-bg { position: relative; }
+    .hair-art {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      opacity: 0.18;
+      filter: blur(0px);
+      user-select: none;
+    }
+    .hair-art-label {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      letter-spacing: 0.05em;
+      pointer-events: none;
+    }
+
+    /* ── BOOKING ── */
+    #booking { background: #161616; }
+    .booking-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .booking-info { padding-top: 8px; }
+    .booking-features {
+      list-style: none;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .booking-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--text-dim);
+    }
+    .booking-features li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .booking-form {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-submit {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 15px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: 6px;
+      box-shadow: 0 4px 20px rgba(255,90,95,0.3);
+    }
+    .form-submit:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    #success-msg {
+      display: none;
+      background: rgba(102,187,106,0.12);
+      border: 1px solid rgba(102,187,106,0.4);
+      border-radius: 12px;
+      padding: 20px 24px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    #success-msg .check { font-size: 2rem; margin-bottom: 10px; }
+    #success-msg h4 { color: #81c784; font-size: 1.05rem; margin-bottom: 6px; }
+    #success-msg p { color: var(--text-dim); font-size: 0.88rem; }
+
+    /* ── REVIEWS ── */
+    #reviews { background: var(--charcoal); }
+    .reviews-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 52px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .reviews-stat {
+      text-align: right;
+    }
+    .reviews-big-score {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+    .reviews-big-score span { color: var(--accent); }
+    .reviews-stars-big { color: #ffd166; font-size: 1.3rem; letter-spacing: 2px; margin: 4px 0; }
+    .reviews-count { color: var(--text-dim); font-size: 0.85rem; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .review-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 26px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .review-card:hover { border-color: rgba(255,90,95,0.3); transform: translateY(-3px); }
+    .review-stars { color: #ffd166; font-size: 1rem; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .reviewer-info { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .av1 { background: linear-gradient(135deg, #ff5a5f, #c2185b); }
+    .av2 { background: linear-gradient(135deg, #ab47bc, #7b1fa2); }
+    .av3 { background: linear-gradient(135deg, #ff5a5f, #ff8a65); }
+    .reviewer-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+    .reviewer-date { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      border-top: 1px solid var(--border);
+      padding: 60px 5% 36px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .nav-logo { display: block; font-size: 1.25rem; margin-bottom: 14px; }
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+    .footer-social { display: flex; gap: 12px; }
+    .social-btn {
+      width: 36px; height: 36px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .social-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li { font-size: 0.88rem; color: var(--text-dim); line-height: 1.5; }
+    .footer-col ul li strong { color: var(--text); font-weight: 600; }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.82rem; color: var(--muted); }
+    .footer-bottom a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .footer-bottom a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-visual { display: none; }
+      #hero { min-height: 80vh; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .booking-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      #hamburger { display: flex; }
+      h1.hero-title { font-size: 2.3rem; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-header { flex-direction: column; align-items: flex-start; }
+      .reviews-stat { text-align: left; }
+      .footer-grid { grid-template-columns: 1fr; }
+      section { padding: 64px 5%; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 400px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+<!-- PROMO BANNER -->
+<div id="promo-banner">
+  ✨ Free sample site made for <strong>Young Trend Hair Studio</strong> by Lifelutions — your real site live in 48h. Like it?&nbsp; <a href="mailto:contact.lifelutions@gmail.com">contact.lifelutions@gmail.com</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Young Trend <span>Hair Studio</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#booking">Book</a></li>
+    <li><a href="#booking" class="btn-nav">Book Now</a></li>
+  </ul>
+  <button id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+  <a href="#services" class="mob-link">Services</a>
+  <a href="#gallery" class="mob-link">Gallery</a>
+  <a href="#reviews" class="mob-link">Reviews</a>
+  <a href="#booking" class="mob-link btn-mobile">Book Now</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Scarborough's Favourite Studio Since 2010</div>
+    <div class="hero-stars">
+      ★★★★★ <span>4.8 stars · 911 happy clients on Google</span>
+    </div>
+    <h1 class="hero-title">
+      Hair that moves<br/>
+      <em>as boldly</em> as you do.
+    </h1>
+    <p class="hero-sub">
+      From precision cuts to stunning colour transformations — our expert stylists at Young Trend Hair Studio craft looks that are entirely, unapologetically yours.
+    </p>
+    <div class="hero-ctas">
+      <a href="#booking" class="btn-primary">Book Your Appointment</a>
+      <a href="#services" class="btn-outline">See Services</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-inner">
+      <div class="hair-strands" id="hair-strands"></div>
+      <div class="hero-visual-text">Your Best Look Awaits</div>
+      <div class="hero-visual-sub">Est. Scarborough · Toronto</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label reveal">What We Offer</p>
+  <h2 class="section-title reveal">Expert Services,<br/>Real Results</h2>
+  <p class="section-sub reveal">Every service is performed by our trained stylists using premium products tailored to your hair type and lifestyle.</p>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">✂️</span>
+      <div class="service-name">Haircut & Style</div>
+      <p class="service-desc">A precision cut shaped to your face and finished with a blowout that lasts all week. Includes shampoo and style.</p>
+      <div class="service-price">From $55 CAD</div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-icon">💈</span>
+      <div class="service-name">Men's Cut</div>
+      <p class="service-desc">Classic or modern — scissor cut, fade, or taper. Sharp clean lines with expert finishing detail.</p>
+      <div class="service-price">From $28 CAD</div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-icon">🎨</span>
+      <div class="service-name">Full Colour</div>
+      <p class="service-desc">Transform your look with a single-process all-over colour. We use ammonia-free, nourishing formulas.</p>
+      <div class="service-price">From $95 CAD</div>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <span class="service-icon">🌟</span>
+      <div class="service-name">Highlights</div>
+      <p class="service-desc">Partial or full highlights to add dimension and brightness. Customized to your natural base.</p>
+      <div class="service-price">From $120 CAD</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🌊</span>
+      <div class="service-name">Balayage</div>
+      <p class="service-desc">Hand-painted colour for a seamless, sun-kissed gradient that grows out beautifully with zero harsh lines.</p>
+      <div class="service-price">From $170 CAD</div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-icon">💫</span>
+      <div class="service-name">Perm</div>
+      <p class="service-desc">Add lasting texture and body. We offer everything from loose beach waves to defined curls tailored to your look.</p>
+      <div class="service-price">From $130 CAD</div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-icon">💆</span>
+      <div class="service-name">Hair Treatment</div>
+      <p class="service-desc">Deep conditioning, keratin smoothing, or protein repair — restore shine, strength, and silkiness in one session.</p>
+      <div class="service-price">From $75 CAD</div>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <span class="service-icon">💨</span>
+      <div class="service-name">Blowout</div>
+      <p class="service-desc">Smooth, voluminous, or bouncy — pick your finish. Perfect before a big night out or important event.</p>
+      <div class="service-price">From $48 CAD</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">👑</span>
+      <div class="service-name">Updo & Special Occasion</div>
+      <p class="service-desc">Weddings, galas, proms — our stylists create elegant updos and formal styles that photograph beautifully.</p>
+      <div class="service-price">From $90 CAD</div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-icon">✨</span>
+      <div class="service-name">Extensions Consultation</div>
+      <p class="service-desc">Free 30-minute consultation for tape-in, clip-in, or fusion extensions. Custom matched to your colour and texture.</p>
+      <div class="service-price">Free Consult</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <p class="section-label reveal">Our Work</p>
+  <h2 class="section-title reveal">Style Gallery</h2>
+  <p class="section-sub reveal">A glimpse at the transformations happening in our chair every single day.</p>
+  <div class="gallery-grid">
+    <div class="gallery-tile reveal">
+      <div class="gallery-tile-bg gt1">
+        <div class="hair-art">〰️</div>
+        <div class="hair-art-label">Balayage<br/>Colour Melt</div>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-label">Balayage</span></div>
+    </div>
+    <div class="gallery-tile reveal reveal-delay-1">
+      <div class="gallery-tile-bg gt2">
+        <div class="hair-art">🌀</div>
+        <div class="hair-art-label">Perm<br/>Beach Waves</div>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-label">Perm Waves</span></div>
+    </div>
+    <div class="gallery-tile reveal reveal-delay-2">
+      <div class="gallery-tile-bg gt3">
+        <div class="hair-art">✂️</div>
+        <div class="hair-art-label">Precision<br/>Blunt Cut</div>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-label">Precision Cut</span></div>
+    </div>
+    <div class="gallery-tile reveal">
+      <div class="gallery-tile-bg gt4">
+        <div class="hair-art">🔥</div>
+        <div class="hair-art-label">Rich Red<br/>Colour</div>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-label">Full Colour</span></div>
+    </div>
+    <div class="gallery-tile reveal reveal-delay-1">
+      <div class="gallery-tile-bg gt5">
+        <div class="hair-art">💎</div>
+        <div class="hair-art-label">Bridal<br/>Updo</div>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-label">Bridal Updo</span></div>
+    </div>
+    <div class="gallery-tile reveal reveal-delay-2">
+      <div class="gallery-tile-bg gt6">
+        <div class="hair-art">⚡</div>
+        <div class="hair-art-label">Platinum<br/>Highlights</div>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-label">Highlights</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-wrap">
+    <div class="booking-info">
+      <p class="section-label reveal">Appointments</p>
+      <h2 class="section-title reveal">Ready for your<br/><em style="font-style:italic;color:var(--accent);">next look?</em></h2>
+      <p class="section-sub reveal" style="margin-bottom:0">Book your appointment in seconds. We'll confirm within 2 hours and have everything ready when you walk in.</p>
+      <ul class="booking-features reveal">
+        <li>Flexible morning and evening time slots</li>
+        <li>Walk-ins welcome when available</li>
+        <li>Free extensions consultation included</li>
+        <li>Colour consultations at no charge</li>
+        <li>Conveniently located at Midland & Sheppard</li>
+      </ul>
+    </div>
+    <div class="booking-form reveal">
+      <form id="booking-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Jessica" required />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Chen" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="(416) 555-0000" />
+        </div>
+        <div class="form-group">
+          <label for="service">Service</label>
+          <select id="service" required>
+            <option value="" disabled selected>Select a service…</option>
+            <option>Haircut & Style — from $55</option>
+            <option>Men's Cut — from $28</option>
+            <option>Full Colour — from $95</option>
+            <option>Highlights — from $120</option>
+            <option>Balayage — from $170</option>
+            <option>Perm — from $130</option>
+            <option>Hair Treatment — from $75</option>
+            <option>Blowout — from $48</option>
+            <option>Updo / Special Occasion — from $90</option>
+            <option>Extensions Consultation — Free</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" required />
+          </div>
+          <div class="form-group">
+            <label for="time">Preferred Time</label>
+            <select id="time">
+              <option value="" disabled selected>Pick a time…</option>
+              <option>9:00 AM</option>
+              <option>10:00 AM</option>
+              <option>11:00 AM</option>
+              <option>12:00 PM</option>
+              <option>1:00 PM</option>
+              <option>2:00 PM</option>
+              <option>3:00 PM</option>
+              <option>4:00 PM</option>
+              <option>5:00 PM</option>
+              <option>6:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" placeholder="Any special requests, hair concerns, or reference photos you'd like to share…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Request Appointment</button>
+      </form>
+      <div id="success-msg">
+        <div class="check">✅</div>
+        <h4>Appointment Request Sent!</h4>
+        <p>Thank you! We'll confirm your booking within 2 hours. See you soon at Young Trend Hair Studio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-header">
+    <div>
+      <p class="section-label">Client Love</p>
+      <h2 class="section-title">What Our<br/>Clients Say</h2>
+    </div>
+    <div class="reviews-stat">
+      <div class="reviews-big-score">4.8<span>★</span></div>
+      <div class="reviews-stars-big">★★★★★</div>
+      <div class="reviews-count">Based on 911 Google Reviews</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I came in with a picture of a balayage I loved, and honestly they nailed it even better than I imagined. The colour blends so naturally and it grows out without any harsh lines. I've been coming back every 4 months for touch-ups — wouldn't trust anyone else."</p>
+      <div class="reviewer-info">
+        <div class="reviewer-avatar av1">S</div>
+        <div>
+          <div class="reviewer-name">Sophie L.</div>
+          <div class="reviewer-date">Google Review · 3 weeks ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-1">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Best haircut I've had in years — and I've tried pretty much every salon in Scarborough. They actually listened to what I wanted, didn't just do their own thing. My hair has never felt this healthy. The treatment they recommended made such a difference in just one session."</p>
+      <div class="reviewer-info">
+        <div class="reviewer-avatar av2">M</div>
+        <div>
+          <div class="reviewer-name">Michelle T.</div>
+          <div class="reviewer-date">Google Review · 1 month ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Came in for my wedding updo and I am SO glad I chose Young Trend. The stylist was so patient, did a trial run, and on the big day my hair was absolutely perfect — stayed in place all night. Multiple guests asked where I got my hair done. Absolutely recommend!"</p>
+      <div class="reviewer-info">
+        <div class="reviewer-avatar av3">A</div>
+        <div>
+          <div class="reviewer-name">Amanda K.</div>
+          <div class="reviewer-date">Google Review · 2 months ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Young Trend <span>Hair Studio</span></a>
+      <p>Scarborough's go-to destination for modern haircuts, vibrant colour, and transformative styling. Walk in as you are, walk out as you want to be.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn" aria-label="Instagram">IG</a>
+        <a href="#" class="social-btn" aria-label="Facebook">FB</a>
+        <a href="#" class="social-btn" aria-label="TikTok">TK</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Visit Us</h4>
+      <ul>
+        <li><strong>Address</strong><br/>3300 Midland Ave #40<br/>Scarborough, ON M1V 5L1</li>
+        <li><strong>Phone</strong><br/>(416) 555-0000</li>
+        <li><strong>Email</strong><br/>hello@youngtrend.ca</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <ul>
+        <li><strong>Mon – Fri</strong><br/>10:00 AM – 7:00 PM</li>
+        <li><strong>Saturday</strong><br/>9:00 AM – 6:00 PM</li>
+        <li><strong>Sunday</strong><br/>10:00 AM – 5:00 PM</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Young Trend Hair Studio. All rights reserved.</p>
+    <p>Website designed by <a href="mailto:contact.lifelutions@gmail.com">Lifelutions</a> · Toronto, ON</p>
+  </div>
+</footer>
+
+<script>
+  // ── HAMBURGER MENU ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ── BOOKING FORM ──
+  document.getElementById('booking-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const service = document.getElementById('service').value;
+    if (!fname || !email || !service) {
+      alert('Please fill in your name, email, and select a service.');
+      return;
+    }
+    this.style.display = 'none';
+    const msg = document.getElementById('success-msg');
+    msg.style.display = 'block';
+    msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── HERO HAIR STRANDS ──
+  const container = document.getElementById('hair-strands');
+  if (container) {
+    for (let i = 0; i < 18; i++) {
+      const strand = document.createElement('div');
+      strand.className = 'strand';
+      const left = 10 + Math.random() * 80;
+      const top = Math.random() * 30;
+      const height = 80 + Math.random() * 160;
+      const delay = Math.random() * 4;
+      const dur = 3 + Math.random() * 3;
+      const opacity = 0.3 + Math.random() * 0.5;
+      strand.style.cssText = `left:${left}%;top:${top}%;height:${height}px;animation-delay:${delay}s;animation-duration:${dur}s;opacity:${opacity};`;
+      container.appendChild(strand);
+    }
+  }
+
+  // ── NAV ACTIVE HIGHLIGHT ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a:not(.btn-nav)');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  }, { passive: true });
+
+  // ── SET MIN DATE FOR BOOKING ──
+  const dateInput = document.getElementById('date');
+  if (dateInput) {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    dateInput.min = `${yyyy}-${mm}-${dd}`;
+  }
+</script>
+</body>
+</html>
