@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hippo Hippo Nails — Nail Salon in North York, Toronto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --mint:       #4ecdc4;
+      --mint-light: #a8ede9;
+      --mint-pale:  #e8f9f8;
+      --coral:      #ff6b6b;
+      --coral-light:#ffa8a8;
+      --lavender:   #c3aed6;
+      --lav-pale:   #f3eeff;
+      --cream:      #fffdf9;
+      --dark:       #2d3436;
+      --mid:        #636e72;
+      --light:      #b2bec3;
+      --white:      #ffffff;
+      --radius:     18px;
+      --shadow:     0 8px 32px rgba(78,205,196,.15);
+      --shadow-sm:  0 2px 12px rgba(78,205,196,.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.65;
+    }
+
+    /* ── PROMO BANNER ────────────────────────────────────── */
+    .promo-banner {
+      background: linear-gradient(90deg, var(--mint) 0%, var(--lavender) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      position: relative;
+      z-index: 1000;
+    }
+    .promo-banner a {
+      color: var(--white);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255,253,249,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(78,205,196,.2);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo .hippo-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--mint) 0%, var(--lavender) 100%);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 2px 8px rgba(78,205,196,.35);
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      display: flex; flex-direction: column; line-height: 1.15;
+    }
+    .nav-logo-text span:first-child {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .nav-logo-text span:last-child {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mint);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--mid);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--mint); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--mint) 0%, var(--lavender) 100%);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      font-size: 0.88rem !important;
+      transition: transform .2s, box-shadow .2s !important;
+      box-shadow: 0 4px 14px rgba(78,205,196,.4);
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(78,205,196,.5) !important; color: var(--white) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2.5px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255,253,249,.98);
+      z-index: 998;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--mint); }
+    .mobile-menu .mob-cta {
+      background: linear-gradient(135deg, var(--mint), var(--lavender));
+      color: var(--white) !important;
+      padding: 14px 40px;
+      border-radius: 50px;
+      box-shadow: 0 4px 18px rgba(78,205,196,.4);
+    }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    #hero {
+      min-height: 90vh;
+      background: linear-gradient(135deg, var(--mint-pale) 0%, var(--lav-pale) 60%, #fff0f3 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* floating blobs */
+    #hero::before, #hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    #hero::before {
+      width: 420px; height: 420px;
+      background: var(--mint-light);
+      top: -80px; left: -100px;
+    }
+    #hero::after {
+      width: 380px; height: 380px;
+      background: var(--coral-light);
+      bottom: -80px; right: -80px;
+    }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 740px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1.5px solid rgba(78,205,196,.35);
+      border-radius: 50px;
+      padding: 7px 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--mid);
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-badge .stars { color: #f9c74f; letter-spacing: 1px; }
+
+    .hero-hippo {
+      font-size: 3.8rem;
+      margin-bottom: 16px;
+      display: block;
+      animation: float 3.5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+    h1 em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--mint) 0%, var(--lavender) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.08rem;
+      color: var(--mid);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      font-weight: 500;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--mint) 0%, #38b2ac 100%);
+      color: var(--white);
+      padding: 15px 34px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(78,205,196,.45);
+      transition: transform .2s, box-shadow .2s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      font-family: 'Quicksand', sans-serif;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(78,205,196,.5); }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--mint);
+      padding: 15px 34px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid var(--mint);
+      transition: background .2s, color .2s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { background: var(--mint); color: var(--white); }
+
+    /* ── SECTION COMMONS ─────────────────────────────────── */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      line-height: 1.25;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      color: var(--mid);
+      max-width: 540px;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .section-header { margin-bottom: 52px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-sub { margin: 0 auto; }
+
+    /* ── SERVICES ────────────────────────────────────────── */
+    #services {
+      background: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 22px;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      border: 1.5px solid transparent;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--mint), var(--lavender));
+      border-radius: 4px 0 0 4px;
+      opacity: 0;
+      transition: opacity .25s;
+    }
+    .service-card:hover {
+      border-color: var(--mint-light);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon { font-size: 1.9rem; margin-bottom: 12px; }
+    .service-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--mid);
+      margin-bottom: 14px;
+      line-height: 1.55;
+    }
+    .service-price {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--mint);
+    }
+    .service-price span {
+      font-size: 0.8rem;
+      color: var(--light);
+      font-weight: 500;
+    }
+
+    /* ── GALLERY ─────────────────────────────────────────── */
+    #gallery { background: var(--mint-pale); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .gallery-tile {
+      border-radius: var(--radius);
+      aspect-ratio: 1 / 1.08;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .gallery-tile:hover { transform: scale(1.03); box-shadow: var(--shadow); }
+
+    .gallery-tile .tile-bg {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+    .tile-label {
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(6px);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .g1 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 60%, #fda085 100%); }
+    .g2 { background: linear-gradient(135deg, #4ecdc4 0%, #44a8b3 50%, #b8f1f1 100%); }
+    .g3 { background: linear-gradient(135deg, #c3aed6 0%, #a18cd1 50%, #fbc2eb 100%); }
+    .g4 { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 60%, #ff9a9e 100%); }
+    .g5 { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 60%, #d4fc79 100%); }
+    .g6 { background: linear-gradient(135deg, #2d3436 0%, #636e72 40%, #b2bec3 100%); }
+
+    /* ── REVIEWS ─────────────────────────────────────────── */
+    #reviews { background: var(--white); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 30px 28px;
+      border: 1.5px solid rgba(78,205,196,.15);
+      box-shadow: var(--shadow-sm);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+    .review-stars { font-size: 1.1rem; letter-spacing: 2px; color: #f9c74f; margin-bottom: 14px; }
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--mid);
+      line-height: 1.7;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .av1 { background: linear-gradient(135deg, var(--mint), #38b2ac); }
+    .av2 { background: linear-gradient(135deg, var(--coral), #ff8c69); }
+    .av3 { background: linear-gradient(135deg, var(--lavender), #9b72cf); }
+    .review-name { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+    .review-date { font-size: 0.78rem; color: var(--light); }
+
+    /* ── BOOKING ─────────────────────────────────────────── */
+    #book {
+      background: linear-gradient(135deg, var(--lav-pale) 0%, var(--mint-pale) 100%);
+    }
+
+    .book-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .book-info h2 { margin-bottom: 16px; }
+    .book-info p {
+      color: var(--mid);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .book-perks { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .book-perks li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--mid);
+      font-weight: 600;
+    }
+    .perk-dot {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--mint), var(--lavender));
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem;
+      color: var(--white);
+    }
+
+    .book-form {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px 36px;
+      box-shadow: var(--shadow);
+    }
+    .book-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--dark);
+      margin-bottom: 24px;
+    }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 7px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #dfe6e9;
+      border-radius: 12px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.95rem;
+      color: var(--dark);
+      background: var(--cream);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--mint);
+      box-shadow: 0 0 0 3px rgba(78,205,196,.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .success-msg {
+      display: none;
+      background: linear-gradient(135deg, var(--mint-pale), var(--lav-pale));
+      border: 1.5px solid var(--mint-light);
+      border-radius: 16px;
+      padding: 22px;
+      text-align: center;
+      font-weight: 600;
+      color: #2a9d8f;
+      font-size: 1rem;
+      margin-top: 16px;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      color: #b2bec3;
+      padding: 60px 5% 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .foot-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .foot-logo .hippo-sm {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--mint), var(--lavender));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .foot-logo-text span:first-child {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      display: block;
+      line-height: 1.2;
+    }
+    .foot-logo-text span:last-child {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mint);
+    }
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .footer-col p, .footer-col li {
+      font-size: 0.88rem;
+      line-height: 1.85;
+      list-style: none;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 3px 0;
+    }
+    .hours-row .day { color: #b2bec3; }
+    .hours-row .time { color: var(--mint); font-weight: 600; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8rem;
+    }
+    .footer-bottom a {
+      color: var(--mint);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .footer-bottom a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .book-wrap { grid-template-columns: 1fr; gap: 36px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 650px) {
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      #hero { min-height: 80vh; padding: 60px 5%; }
+      .hero-hippo { font-size: 3rem; }
+
+      section { padding: 60px 5%; }
+
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+
+      .book-form { padding: 28px 22px; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 420px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PROMO BANNER -->
+  <div class="promo-banner">
+    ✨ Free sample site made for <strong>Hippo Hippo Nails</strong> by Lifelutions — real site live in 48h. Like it? <a href="mailto:contact.lifelutions@gmail.com">contact.lifelutions@gmail.com</a>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMob()">Services</a>
+    <a href="#gallery" onclick="closeMob()">Gallery</a>
+    <a href="#reviews" onclick="closeMob()">Reviews</a>
+    <a href="#book" onclick="closeMob()" class="mob-cta">Book Now 💅</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">
+      <div class="hippo-icon">🦛</div>
+      <div class="nav-logo-text">
+        <span>Hippo Hippo Nails</span>
+        <span>North York · Toronto</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#book" class="nav-cta">Book Now 💅</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMob()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="stars">★★★★★</span>
+        <span>4.8 stars · 235 Google Reviews</span>
+      </div>
+      <span class="hero-hippo">🦛</span>
+      <h1>
+        Nails So Good,<br />
+        You'll <em>Flip for Them.</em>
+      </h1>
+      <p class="hero-sub">
+        North York's friendliest nail studio. Gel, acrylics, nail art &amp; more — all done with love (and a little hippo magic) at 5291a Yonge St.
+      </p>
+      <div class="hero-btns">
+        <a href="#book" class="btn-primary">Book Your Appointment</a>
+        <a href="#services" class="btn-secondary">View Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-header">
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-title">Services &amp; Pricing</h2>
+      <p class="section-sub">Every treatment is done with top-quality products, meticulous attention, and a whole lot of care.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">💅</div>
+        <div class="service-name">Classic Manicure</div>
+        <div class="service-desc">Shaping, cuticle care, hand massage, and your colour of choice. The perfect reset for your hands.</div>
+        <div class="service-price">From $32 <span>CAD</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">✨</div>
+        <div class="service-name">Gel / Shellac Manicure</div>
+        <div class="service-desc">Long-lasting gel polish that stays chip-free for up to three weeks. Available in 200+ shades.</div>
+        <div class="service-price">From $48 <span>CAD</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🌊</div>
+        <div class="service-name">Classic Pedicure</div>
+        <div class="service-desc">Soak, scrub, shape, massage, and polish — a full foot treatment that leaves you walking on air.</div>
+        <div class="service-price">From $45 <span>CAD</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">💎</div>
+        <div class="service-name">Acrylic Full Set</div>
+        <div class="service-desc">Durable acrylic extensions sculpted to your preferred length and shape — coffin, almond, square, or stiletto.</div>
+        <div class="service-price">From $65 <span>CAD</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔮</div>
+        <div class="service-name">Builder Gel (BIAB)</div>
+        <div class="service-desc">Strengthen natural nails with a flexible, ultra-glossy gel overlay. Ideal for growing out your nails with support.</div>
+        <div class="service-price">From $58 <span>CAD</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <div class="service-name">Nail Art</div>
+        <div class="service-desc">From minimalist line work and ombre to 3D florals and chrome finishes. Bring your inspo or leave it to us.</div>
+        <div class="service-price">From $8 <span>CAD / nail</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🌸</div>
+        <div class="service-name">Dip Powder</div>
+        <div class="service-desc">Lightweight and odourless — dip powder gives you vibrant, long-lasting colour without UV curing.</div>
+        <div class="service-price">From $52 <span>CAD</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🧼</div>
+        <div class="service-name">Removal</div>
+        <div class="service-desc">Safe, professional removal of gel, acrylic, dip, or builder gel with zero damage to your natural nails.</div>
+        <div class="service-price">From $15 <span>CAD</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="section-header centered">
+      <span class="section-label">Our Work</span>
+      <h2 class="section-title">A Little Peek at the Magic</h2>
+      <p class="section-sub">Every set is one of a kind. Here are some styles our clients have been loving.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-tile">
+        <div class="tile-bg g1">
+          <span class="tile-label">🌸 Soft Rose Ombre</span>
+        </div>
+      </div>
+      <div class="gallery-tile">
+        <div class="tile-bg g2">
+          <span class="tile-label">🌊 Ocean Chrome</span>
+        </div>
+      </div>
+      <div class="gallery-tile">
+        <div class="tile-bg g3">
+          <span class="tile-label">💜 Lavender Gel</span>
+        </div>
+      </div>
+      <div class="gallery-tile">
+        <div class="tile-bg g4">
+          <span class="tile-label">🍑 Peach French Tips</span>
+        </div>
+      </div>
+      <div class="gallery-tile">
+        <div class="tile-bg g5">
+          <span class="tile-label">🌿 Pastel Floral Art</span>
+        </div>
+      </div>
+      <div class="gallery-tile">
+        <div class="tile-bg g6">
+          <span class="tile-label">🖤 Noir Stiletto</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="section-header centered">
+      <span class="section-label">What Clients Say</span>
+      <h2 class="section-title">Loved by Toronto ★★★★★</h2>
+      <p class="section-sub">Don't just take our word for it — here's what our community is saying on Google.</p>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I've been coming to Hippo Hippo Nails for over a year and I genuinely can't imagine going anywhere else. The gel sets last me a full three weeks without chipping, and everyone there is so warm and welcoming. My nails always look better than the inspo photo I bring in!"</p>
+        <div class="review-author">
+          <div class="review-avatar av1">S</div>
+          <div>
+            <div class="review-name">Sarah M.</div>
+            <div class="review-date">Google Review · 2 weeks ago</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Came in for a last-minute pedicure before a trip and they squeezed me in without any fuss. The foot massage alone was worth it — I fell asleep in the chair! The nail art they did for free as a little extra touch. Obsessed. Will be back every month."</p>
+        <div class="review-author">
+          <div class="review-avatar av2">J</div>
+          <div>
+            <div class="review-name">Jamie T.</div>
+            <div class="review-date">Google Review · 1 month ago</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I got a full set of builder gel and nail art for my wedding and they were absolutely perfect. Everyone at the reception was asking where I got my nails done. Professional, clean, reasonably priced for the quality you get. This is my spot for life."</p>
+        <div class="review-author">
+          <div class="review-avatar av3">P</div>
+          <div>
+            <div class="review-name">Priya K.</div>
+            <div class="review-date">Google Review · 3 months ago</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="book">
+    <div class="book-wrap">
+
+      <div class="book-info">
+        <span class="section-label">Book an Appointment</span>
+        <h2 class="section-title">Ready for Your Next Look?</h2>
+        <p>Fill out the quick form and we'll confirm your slot within a few hours. Walk-ins are always welcome too — just pop in at 5291a Yonge St, North York.</p>
+        <ul class="book-perks">
+          <li><span class="perk-dot">✓</span> No deposit required to reserve</li>
+          <li><span class="perk-dot">✓</span> Confirmation by text or email</li>
+          <li><span class="perk-dot">✓</span> Easy reschedule up to 24h before</li>
+          <li><span class="perk-dot">✓</span> Complimentary nail consultation included</li>
+        </ul>
+      </div>
+
+      <div class="book-form">
+        <h3>Request Your Appointment 🦛</h3>
+        <form id="bookingForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="Emily" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Chen" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="emily@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(416) 555-0123" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="service">Service</label>
+              <select id="service">
+                <option value="">— Select —</option>
+                <option>Classic Manicure</option>
+                <option>Gel / Shellac Manicure</option>
+                <option>Classic Pedicure</option>
+                <option>Acrylic Full Set</option>
+                <option>Builder Gel (BIAB)</option>
+                <option>Nail Art</option>
+                <option>Dip Powder</option>
+                <option>Removal</option>
+                <option>Other / Combo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="date">Preferred Date</label>
+              <input type="date" id="date" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Notes (optional)</label>
+            <textarea id="notes" placeholder="Any inspo, preferences, or questions for us..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary form-submit">Request Appointment 💅</button>
+        </form>
+        <div class="success-msg" id="successMsg">
+          Thanks! We'll confirm your appointment shortly 💅<br />
+          <small style="font-weight:500;color:var(--mid);">Check your email — we'll be in touch soon!</small>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="foot-logo">
+          <div class="hippo-sm">🦛</div>
+          <div class="foot-logo-text">
+            <span>Hippo Hippo Nails</span>
+            <span>North York · Toronto</span>
+          </div>
+        </div>
+        <p>Your friendly neighbourhood nail studio bringing top-quality treatments and good vibes to Yonge Street since day one. Come as you are — leave with stunning nails.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <p>5291a Yonge St<br />North York, ON<br />Toronto, Canada</p>
+        <br />
+        <p>📞 (416) 555-0198</p>
+        <p>📧 hello@hippohipponails.ca</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <div class="hours-row"><span class="day">Monday</span><span class="time">10am – 7pm</span></div>
+        <div class="hours-row"><span class="day">Tuesday</span><span class="time">10am – 7pm</span></div>
+        <div class="hours-row"><span class="day">Wednesday</span><span class="time">10am – 7pm</span></div>
+        <div class="hours-row"><span class="day">Thursday</span><span class="time">10am – 8pm</span></div>
+        <div class="hours-row"><span class="day">Friday</span><span class="time">10am – 8pm</span></div>
+        <div class="hours-row"><span class="day">Saturday</span><span class="time">9am – 7pm</span></div>
+        <div class="hours-row"><span class="day">Sunday</span><span class="time">11am – 5pm</span></div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Hippo Hippo Nails · 5291a Yonge St, North York, Toronto</span>
+      <span>Designed &amp; built by <a href="mailto:contact.lifelutions@gmail.com">Lifelutions</a> — <a href="mailto:contact.lifelutions@gmail.com">contact.lifelutions@gmail.com</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Booking form
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    });
+
+    // Hamburger / mobile menu
+    function toggleMob() {
+      const menu = document.getElementById('mobileMenu');
+      const ham  = document.getElementById('hamburger');
+      menu.classList.toggle('open');
+      ham.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeMob() {
+      const menu = document.getElementById('mobileMenu');
+      const ham  = document.getElementById('hamburger');
+      menu.classList.remove('open');
+      ham.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Close mobile menu on resize
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 650) closeMob();
+    });
+
+    // Set min date for date input to today
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+    }
+  </script>
+</body>
+</html>

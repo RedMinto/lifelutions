@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vintage Barber Shop – 9661 Jane St, Toronto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Oswald:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream:   #f5efe6;
+      --warm-white: #fdf8f1;
+      --brown:   #5c3d2e;
+      --brown-dark: #3a2418;
+      --brown-mid:  #7a4f3a;
+      --red:     #9b2335;
+      --red-light: #c0392b;
+      --gold:    #c9a84c;
+      --gold-light: #e8c97a;
+      --charcoal: #2c2c2c;
+      --pole-white: #f0f0f0;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ─── Promo Banner ─── */
+    .promo-banner {
+      background: var(--red);
+      color: #fff;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.82rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1000;
+    }
+    .promo-banner a { color: var(--gold-light); text-decoration: underline; }
+
+    /* ─── Sticky Nav ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: var(--brown-dark);
+      border-bottom: 3px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      color: var(--cream);
+      font-size: 1.15rem;
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+    .nav-logo-text span {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      color: var(--cream);
+      text-decoration: none;
+      padding: 6px 14px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .btn-nav {
+      background: var(--red);
+      color: #fff !important;
+      border-radius: 3px;
+      padding: 8px 20px !important;
+      font-weight: 600 !important;
+      border: 2px solid var(--red);
+      transition: background 0.2s, border-color 0.2s !important;
+    }
+    .btn-nav:hover { background: var(--red-light) !important; border-color: var(--red-light) !important; color: #fff !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--brown-dark);
+      z-index: 998;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.12em;
+      color: var(--cream);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .mobile-nav a:hover { color: var(--gold); }
+    .mobile-nav .btn-mobile {
+      background: var(--red);
+      padding: 12px 36px;
+      border-radius: 3px;
+      color: #fff !important;
+      font-size: 1.1rem !important;
+      margin-top: 8px;
+    }
+
+    /* ─── Barber Pole Divider ─── */
+    .pole-divider {
+      height: 8px;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--red)       0px,
+        var(--red)       10px,
+        var(--pole-white) 10px,
+        var(--pole-white) 20px,
+        #1a6bb5          20px,
+        #1a6bb5          30px,
+        var(--pole-white) 30px,
+        var(--pole-white) 40px
+      );
+      background-size: 56px 100%;
+      animation: pole-scroll 3s linear infinite;
+    }
+    @keyframes pole-scroll {
+      from { background-position: 0 0; }
+      to   { background-position: 56px 0; }
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      background: var(--brown-dark);
+      position: relative;
+      overflow: hidden;
+      padding: 90px 40px 80px;
+      text-align: center;
+    }
+    /* vintage paper texture overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(92,61,46,0.35) 0%, transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(155,35,53,0.18) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    /* decorative scissors watermark */
+    .hero-bg-scissors {
+      position: absolute;
+      font-size: 28rem;
+      opacity: 0.025;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-15deg);
+      user-select: none;
+      pointer-events: none;
+      line-height: 1;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 5px 18px;
+      border-radius: 2px;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
+      color: var(--cream);
+      line-height: 1.08;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-rule {
+      width: 80px;
+      height: 3px;
+      background: var(--red);
+      margin: 20px auto;
+      border-radius: 2px;
+    }
+    .hero-sub {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 1.08rem;
+      color: rgba(245,239,230,0.85);
+      max-width: 540px;
+      margin: 0 auto 8px;
+      line-height: 1.65;
+    }
+    .hero-stars {
+      font-size: 1rem;
+      color: var(--gold);
+      margin: 14px 0 30px;
+      letter-spacing: 0.05em;
+    }
+    .hero-stars span { color: rgba(245,239,230,0.6); font-size: 0.88rem; margin-left: 6px; }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      padding: 14px 34px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--red-light); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      padding: 13px 34px;
+      border: 2px solid var(--gold);
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--brown-dark); }
+
+    /* ─── Section Shared ─── */
+    section { padding: 80px 40px; }
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      text-align: center;
+      color: var(--brown-dark);
+      margin-bottom: 6px;
+    }
+    .section-rule {
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin: 14px auto 50px;
+      border-radius: 2px;
+    }
+
+    /* ─── Services ─── */
+    #services { background: var(--cream); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 22px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: var(--warm-white);
+      border: 1px solid rgba(92,61,46,0.15);
+      border-top: 4px solid var(--red);
+      border-radius: 4px;
+      padding: 28px 26px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 6px 24px rgba(58,36,24,0.12); transform: translateY(-2px); }
+    .service-icon {
+      font-size: 2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .service-info { flex: 1; }
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--brown-dark);
+      margin-bottom: 4px;
+    }
+    .service-desc {
+      font-size: 0.83rem;
+      color: #6b5a52;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .service-price {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--red);
+    }
+    .service-price small {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      font-size: 0.72rem;
+      color: #8a7060;
+      margin-left: 4px;
+    }
+
+    /* ─── Gallery ─── */
+    #gallery { background: var(--brown-dark); }
+    #gallery .section-label { color: var(--gold); }
+    #gallery .section-title { color: var(--cream); }
+    #gallery .section-rule { background: var(--red); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .gallery-tile {
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      position: relative;
+      border: 2px solid rgba(201,168,76,0.3);
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .gallery-tile:hover { transform: scale(1.02); border-color: var(--gold); }
+    .gallery-tile-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    .gallery-tile-inner .tile-emoji { font-size: 2.8rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
+
+    /* Tile backgrounds — CSS patterns, all vintage warm */
+    .gt1 { background: radial-gradient(ellipse at 30% 40%, #7a4f3a 0%, #3a2418 100%); }
+    .gt2 { background: linear-gradient(135deg, #5c3d2e 25%, #9b2335 100%); }
+    .gt3 {
+      background-color: #4a3020;
+      background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(201,168,76,0.12) 8px, rgba(201,168,76,0.12) 16px);
+    }
+    .gt4 { background: radial-gradient(circle at 60% 60%, #7a4f3a 0%, #2c1a0e 100%); }
+    .gt5 {
+      background-color: #3a2418;
+      background-image: repeating-conic-gradient(rgba(201,168,76,0.08) 0deg 30deg, transparent 30deg 60deg);
+    }
+    .gt6 { background: linear-gradient(160deg, #9b2335 0%, #5c3d2e 50%, #3a2418 100%); }
+
+    /* ─── Reviews ─── */
+    #reviews { background: var(--warm-white); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .review-card {
+      background: var(--cream);
+      border: 1px solid rgba(92,61,46,0.12);
+      border-radius: 4px;
+      padding: 30px 28px;
+      position: relative;
+    }
+    .review-card::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.25;
+      position: absolute;
+      top: 10px;
+      left: 18px;
+      line-height: 1;
+    }
+    .review-stars { color: var(--gold); font-size: 1rem; margin-bottom: 12px; }
+    .review-text {
+      font-size: 0.93rem;
+      line-height: 1.7;
+      color: #4a3828;
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .review-author {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--brown);
+      font-size: 0.88rem;
+      text-transform: uppercase;
+    }
+    .review-date {
+      font-size: 0.78rem;
+      color: #a08070;
+      margin-top: 2px;
+    }
+    .google-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(92,61,46,0.1);
+      font-size: 0.78rem;
+      color: #8a7060;
+    }
+    .google-g {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
+    /* ─── Booking ─── */
+    #book {
+      background: var(--cream);
+      border-top: 8px solid var(--brown-dark);
+    }
+    .booking-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--warm-white);
+      border: 1px solid rgba(92,61,46,0.15);
+      border-top: 5px solid var(--red);
+      border-radius: 4px;
+      padding: 48px 48px 44px;
+      box-shadow: 0 8px 40px rgba(58,36,24,0.08);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 18px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 6px;
+    }
+    input, select, textarea {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: #fff;
+      border: 1px solid rgba(92,61,46,0.25);
+      border-radius: 3px;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--red); }
+    select { cursor: pointer; }
+    .form-note {
+      font-size: 0.8rem;
+      color: #8a7060;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .success-msg {
+      display: none;
+      background: #2d6a2d;
+      color: #fff;
+      border-radius: 4px;
+      padding: 22px 28px;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+
+    /* ─── About strip ─── */
+    .about-strip {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 60px 40px;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      max-width: none;
+    }
+    .about-strip-inner {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+    .about-text { flex: 1; min-width: 260px; }
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 2rem;
+      margin-bottom: 14px;
+      color: var(--cream);
+    }
+    .about-text p {
+      font-size: 0.97rem;
+      line-height: 1.75;
+      color: rgba(245,239,230,0.82);
+    }
+    .about-stats {
+      display: flex;
+      gap: 36px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .stat-box { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 2.6rem;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,239,230,0.6);
+      margin-top: 4px;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--brown-dark);
+      color: rgba(245,239,230,0.7);
+      padding: 60px 40px 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 50px;
+      max-width: 1000px;
+      margin: 0 auto 40px;
+    }
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+    .footer-brand-tag {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .footer-desc {
+      font-size: 0.87rem;
+      line-height: 1.7;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .footer-col p, .footer-col li {
+      font-size: 0.87rem;
+      line-height: 2;
+      list-style: none;
+    }
+    .footer-col a { color: rgba(245,239,230,0.7); text-decoration: none; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(245,239,230,0.1);
+      padding-top: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.78rem;
+    }
+    .footer-bottom a { color: var(--gold); text-decoration: none; }
+    .footer-bottom a:hover { text-decoration: underline; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 820px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 60px 20px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .booking-wrap { padding: 32px 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .about-strip { padding: 40px 20px; }
+    }
+    @media (max-width: 560px) {
+      .hero { padding: 60px 20px 60px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Promo Banner ─── -->
+  <div class="promo-banner">
+    ✂️ Free sample site made for Vintage Barber Shop by Lifelutions — your real site goes live in 48h. Like what you see?&nbsp;
+    <a href="mailto:contact.lifelutions@gmail.com">contact.lifelutions@gmail.com</a>
+  </div>
+
+  <!-- ─── Navigation ─── -->
+  <nav>
+    <a href="#" class="nav-logo" aria-label="Vintage Barber Shop Home">
+      <!-- Inline SVG barber pole icon -->
+      <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="16" y="2" width="10" height="38" rx="5" fill="#f0f0f0"/>
+        <rect x="16" y="2" width="10" height="38" rx="5" fill="url(#pole)" opacity="0.9"/>
+        <rect x="13" y="1" width="16" height="5" rx="3" fill="#c9a84c"/>
+        <rect x="13" y="36" width="16" height="5" rx="3" fill="#c9a84c"/>
+        <defs>
+          <linearGradient id="pole" x1="16" y1="2" x2="26" y2="40" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#9b2335"/>
+            <stop offset="33%" stop-color="#f0f0f0"/>
+            <stop offset="66%" stop-color="#1a6bb5"/>
+            <stop offset="100%" stop-color="#9b2335"/>
+          </linearGradient>
+        </defs>
+        <!-- spiral stripes -->
+        <path d="M16 10 Q21 14 26 18 Q21 22 16 26 Q21 30 26 34" stroke="#9b2335" stroke-width="3" fill="none" opacity="0.7"/>
+      </svg>
+      <div class="nav-logo-text">
+        Vintage Barber Shop
+        <span>Est. Toronto</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#book" class="btn-nav">Book Now</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#gallery" class="mobile-link">Gallery</a>
+    <a href="#reviews" class="mobile-link">Reviews</a>
+    <a href="#book" class="mobile-link btn-mobile">Book Now</a>
+  </div>
+
+  <!-- ─── Barber Pole Divider ─── -->
+  <div class="pole-divider" role="separator"></div>
+
+  <!-- ─── Hero ─── -->
+  <section class="hero" id="home">
+    <div class="hero-bg-scissors" aria-hidden="true">✂</div>
+    <div class="hero-badge">Est. in the heart of Toronto</div>
+    <h1>The <em>Old-School</em> Cut<br/>Done Right.</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">
+      Walk in, settle into the chair, and let a real barber take care of you. No apps, no attitude — just sharp scissors, hot lather, and craft passed down through generations.
+    </p>
+    <div class="hero-stars">
+      ★★★★★ <span>4.9 out of 5 — 253 happy customers on Google</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#book" class="btn-primary">Book Your Seat</a>
+      <a href="#services" class="btn-outline">See Services & Prices</a>
+    </div>
+  </section>
+
+  <!-- ─── About Strip ─── -->
+  <div class="about-strip">
+    <div class="about-strip-inner">
+      <div class="about-text">
+        <h2>More Than a Haircut.<br/>It's a Ritual.</h2>
+        <p>
+          At Vintage Barber Shop on Jane St, we believe a great cut is earned — with attention, patience, and a steady hand. Whether you're coming in for a classic taper, a clean lineup, or a proper straight-razor shave, you'll leave looking sharper than when you walked in. Same barbers, same chairs, every time.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="stat-num">4.9★</div>
+          <div class="stat-label">Google Rating</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">253</div>
+          <div class="stat-label">5-Star Reviews</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years of Craft</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Services ─── -->
+  <section id="services">
+    <p class="section-label">The Menu</p>
+    <h2 class="section-title">Services &amp; Prices</h2>
+    <div class="section-rule"></div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">✂️</div>
+        <div class="service-info">
+          <div class="service-name">Classic Haircut</div>
+          <div class="service-desc">A timeless cut shaped to suit your style — scissor or clipper finish, your call.</div>
+          <div class="service-price">$35 <small>CAD</small></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">💈</div>
+        <div class="service-info">
+          <div class="service-name">Fade</div>
+          <div class="service-desc">Low, mid, or high — blended clean from skin to length with no hard lines.</div>
+          <div class="service-price">$40 <small>CAD</small></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🪒</div>
+        <div class="service-info">
+          <div class="service-name">Beard Trim</div>
+          <div class="service-desc">Shaped, lined, and conditioned. Add it to any cut or book it on its own.</div>
+          <div class="service-price">$20 <small>CAD</small></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🪥</div>
+        <div class="service-info">
+          <div class="service-name">Straight Razor Shave</div>
+          <div class="service-desc">Hot towel prep, lather, and a single-blade shave — the real old-school experience.</div>
+          <div class="service-price">$45 <small>CAD</small></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🧒</div>
+        <div class="service-info">
+          <div class="service-name">Kids Cut</div>
+          <div class="service-desc">Gentle and patient for the little ones, age 12 and under. We make it easy.</div>
+          <div class="service-price">$25 <small>CAD</small></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">👴</div>
+        <div class="service-info">
+          <div class="service-name">Senior Cut</div>
+          <div class="service-desc">Classic cut at a respectful rate for our 65+ community members.</div>
+          <div class="service-price">$28 <small>CAD</small></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">⭐</div>
+        <div class="service-info">
+          <div class="service-name">Cut + Beard Combo</div>
+          <div class="service-desc">Full haircut and beard trim together — the complete look in one visit.</div>
+          <div class="service-price">$55 <small>CAD</small></div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📐</div>
+        <div class="service-info">
+          <div class="service-name">Lineup / Edge-Up</div>
+          <div class="service-desc">Crisp hairline, temples, and neckline — perfect between full cuts.</div>
+          <div class="service-price">$18 <small>CAD</small></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Gallery ─── -->
+  <section id="gallery">
+    <p class="section-label">Our Work</p>
+    <h2 class="section-title" style="color:var(--cream);">Fresh Out the Chair</h2>
+    <div class="section-rule"></div>
+    <div class="gallery-grid">
+
+      <div class="gallery-tile gt1">
+        <div class="gallery-tile-inner">
+          <span class="tile-emoji">✂️</span>
+          <span>Classic Taper</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile gt2">
+        <div class="gallery-tile-inner">
+          <span class="tile-emoji">💈</span>
+          <span>Skin Fade</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile gt3">
+        <div class="gallery-tile-inner">
+          <span class="tile-emoji">🪒</span>
+          <span>Razor Shave</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile gt4">
+        <div class="gallery-tile-inner">
+          <span class="tile-emoji">🧔</span>
+          <span>Beard Shape-Up</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile gt5">
+        <div class="gallery-tile-inner">
+          <span class="tile-emoji">📐</span>
+          <span>Clean Lineup</span>
+        </div>
+      </div>
+
+      <div class="gallery-tile gt6">
+        <div class="gallery-tile-inner">
+          <span class="tile-emoji">⭐</span>
+          <span>Full Combo</span>
+        </div>
+      </div>
+
+    </div>
+    <p style="text-align:center; margin-top:28px; font-family:'Oswald',sans-serif; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(245,239,230,0.4);">
+      Follow us on Instagram for fresh cuts daily
+    </p>
+  </section>
+
+  <!-- ─── Reviews ─── -->
+  <section id="reviews">
+    <p class="section-label">What Clients Say</p>
+    <h2 class="section-title">4.9★ on Google — 253 Reviews</h2>
+    <div class="section-rule"></div>
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">
+          Best barber I've found in the Jane Street area, full stop. They don't rush you, they actually listen to what you want, and the fade comes out clean every single time. I've tried a dozen shops around North York — none of them compare. This is my place now.
+        </p>
+        <div class="review-author">Marcus T.</div>
+        <div class="review-date">2 weeks ago</div>
+        <div class="google-badge">
+          <div class="google-g" style="color:#4285F4; font-size:11px;">G</div>
+          Posted on Google
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">
+          I brought my 7-year-old in for his first proper barbershop haircut and I couldn't have asked for a better experience. The barber was patient, kept him calm, and the cut looked great. My son actually wants to come back — that says everything. We'll be regulars for sure.
+        </p>
+        <div class="review-author">Priya S.</div>
+        <div class="review-date">1 month ago</div>
+        <div class="google-badge">
+          <div class="google-g" style="color:#4285F4; font-size:11px;">G</div>
+          Posted on Google
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">
+          Got the hot towel straight razor shave on a Friday afternoon — honestly one of the best decisions I've made in a while. Old-school technique, real attention to detail, no shortcuts. The shop itself has a great feel to it. Reminds me of the barbershop my dad used to take me to growing up.
+        </p>
+        <div class="review-author">Daniel O.</div>
+        <div class="review-date">3 weeks ago</div>
+        <div class="google-badge">
+          <div class="google-g" style="color:#4285F4; font-size:11px;">G</div>
+          Posted on Google
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Booking ─── -->
+  <section id="book">
+    <p class="section-label">Reserve Your Chair</p>
+    <h2 class="section-title">Book an Appointment</h2>
+    <div class="section-rule"></div>
+    <div class="booking-wrap">
+      <form id="bookingForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="John Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="416-555-0100" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service">Service</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Choose a service…</option>
+              <option value="classic">Classic Haircut — $35</option>
+              <option value="fade">Fade — $40</option>
+              <option value="beard">Beard Trim — $20</option>
+              <option value="shave">Straight Razor Shave — $45</option>
+              <option value="kids">Kids Cut — $25</option>
+              <option value="senior">Senior Cut — $28</option>
+              <option value="combo">Cut + Beard Combo — $55</option>
+              <option value="lineup">Lineup / Edge-Up — $18</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="time">Preferred Time</label>
+            <select id="time" name="time" required>
+              <option value="" disabled selected>Choose a time…</option>
+              <option>9:00 AM</option>
+              <option>9:30 AM</option>
+              <option>10:00 AM</option>
+              <option>10:30 AM</option>
+              <option>11:00 AM</option>
+              <option>11:30 AM</option>
+              <option>12:00 PM</option>
+              <option>12:30 PM</option>
+              <option>1:00 PM</option>
+              <option>1:30 PM</option>
+              <option>2:00 PM</option>
+              <option>2:30 PM</option>
+              <option>3:00 PM</option>
+              <option>3:30 PM</option>
+              <option>4:00 PM</option>
+              <option>4:30 PM</option>
+              <option>5:00 PM</option>
+              <option>5:30 PM</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%; font-size:1rem; padding:16px;">
+          Request Appointment
+        </button>
+        <p class="form-note">We'll confirm your appointment by phone within a few hours.</p>
+      </form>
+      <div class="success-msg" id="successMsg" role="alert">
+        ✂️ You're all set, <span id="successName"></span>!<br/>
+        We'll call you shortly to confirm your appointment.<br/>
+        <span style="font-size:0.85rem; font-style:normal; font-family:'Lato',sans-serif; color:rgba(255,255,255,0.85); display:block; margin-top:8px;">
+          See you at Vintage Barber Shop, 9661 Jane St.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Vintage Barber Shop</div>
+        <div class="footer-brand-tag">9661 Jane St · Toronto Area</div>
+        <p class="footer-desc">
+          A classic barbershop where craft still matters. Come for the cut, stay for the conversation. Walk-ins welcome — appointments preferred.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon – Fri &nbsp; 9:00 AM – 6:00 PM</li>
+          <li>Saturday &nbsp; 9:00 AM – 5:00 PM</li>
+          <li>Sunday &nbsp; Closed</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>📍 9661 Jane St</li>
+          <li>Toronto Area, ON</li>
+          <li style="margin-top:8px;">📞 (416) 555-0100</li>
+          <li style="margin-top:8px;"><a href="#book">Book an Appointment</a></li>
+          <li><a href="https://maps.google.com" target="_blank" rel="noopener">Get Directions ↗</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 Vintage Barber Shop. All rights reserved.</span>
+      <span>
+        Designed &amp; built by
+        <a href="mailto:contact.lifelutions@gmail.com">Lifelutions</a>
+        · <a href="mailto:contact.lifelutions@gmail.com">Get your own site →</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- ─── JS ─── -->
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    hamburger.addEventListener('click', function() {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.mobile-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Set min date to today for date picker
+    (function() {
+      var dateInput = document.getElementById('date');
+      if (dateInput) {
+        var today = new Date();
+        var yyyy = today.getFullYear();
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var dd = String(today.getDate()).padStart(2, '0');
+        dateInput.min = yyyy + '-' + mm + '-' + dd;
+      }
+    })();
+
+    // Booking form
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var name = document.getElementById('name').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+      var service = document.getElementById('service').value;
+      var date = document.getElementById('date').value;
+      var time = document.getElementById('time').value;
+
+      if (!name || !phone || !service || !date || !time) {
+        alert('Please fill in all fields before requesting your appointment.');
+        return;
+      }
+
+      var firstName = name.split(' ')[0];
+      document.getElementById('successName').textContent = firstName;
+
+      document.getElementById('bookingForm').style.display = 'none';
+      var msg = document.getElementById('successMsg');
+      msg.style.display = 'block';
+
+      // Scroll success message into view
+      msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Smooth active nav highlight on scroll
+    (function() {
+      var sections = document.querySelectorAll('section[id], div[id="home"]');
+      var navLinks = document.querySelectorAll('.nav-links a');
+
+      window.addEventListener('scroll', function() {
+        var scrollY = window.pageYOffset;
+        sections.forEach(function(sec) {
+          var top = sec.offsetTop - 90;
+          var bottom = top + sec.offsetHeight;
+          var id = sec.getAttribute('id');
+          if (scrollY >= top && scrollY < bottom) {
+            navLinks.forEach(function(a) {
+              a.style.color = '';
+              if (a.getAttribute('href') === '#' + id) {
+                a.style.color = 'var(--gold)';
+              }
+            });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
