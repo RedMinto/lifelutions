@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NorthPeak Electric | Licensed Electricians — Greater Toronto Area</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-900: #0a1628;
+      --blue-800: #0d2045;
+      --blue-700: #102a5e;
+      --blue-600: #1a3a7c;
+      --blue-500: #1e4db7;
+      --blue-400: #2563eb;
+      --yellow-500: #f59e0b;
+      --yellow-400: #fbbf24;
+      --yellow-300: #fcd34d;
+      --white: #ffffff;
+      --gray-50:  #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-400: #94a3b8;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --radius: 10px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.10);
+      --shadow-md: 0 4px 16px rgba(0,0,0,.12);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,.18);
+      --transition: 0.22s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', system-ui, sans-serif;
+      background: var(--white);
+      color: var(--gray-800);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ============================================================
+       DEMO BANNER
+    ============================================================ */
+    #demo-banner {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      background: #1e40af;
+      color: #fff;
+      text-align: center;
+      padding: 9px 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    #demo-banner a {
+      color: var(--yellow-300);
+      text-decoration: underline;
+      font-weight: 700;
+    }
+    #demo-banner a:hover { color: #fff; }
+
+    /* ============================================================
+       STICKY NAV
+    ============================================================ */
+    #main-nav {
+      position: sticky;
+      top: 37px; /* height of demo banner */
+      z-index: 1000;
+      background: var(--blue-900);
+      box-shadow: 0 2px 12px rgba(0,0,0,.35);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span { color: var(--yellow-400); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--yellow-400); }
+
+    .btn-call-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow-500);
+      color: var(--blue-900);
+      font-weight: 800;
+      font-size: 0.92rem;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background var(--transition), transform var(--transition);
+      white-space: nowrap;
+    }
+    .btn-call-nav:hover {
+      background: var(--yellow-400);
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--white);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+    #mobile-menu {
+      display: none;
+      background: var(--blue-800);
+      padding: 16px 20px 24px;
+    }
+    #mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    #mobile-menu a {
+      display: block;
+      color: rgba(255,255,255,0.88);
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    #mobile-menu .btn-call-mobile {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      background: var(--yellow-500);
+      color: var(--blue-900);
+      font-weight: 800;
+      padding: 13px;
+      border-radius: 6px;
+      font-size: 1.05rem;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 60%, #0f3460 100%);
+      color: var(--white);
+      padding: 90px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,158,11,0.15);
+      border: 1px solid rgba(245,158,11,0.4);
+      color: var(--yellow-400);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero-headline {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .hero-headline .accent { color: var(--yellow-400); }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.78);
+      max-width: 560px;
+      margin-bottom: 36px;
+      line-height: 1.65;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--yellow-500);
+      color: var(--blue-900);
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 15px 30px;
+      border-radius: 8px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 18px rgba(245,158,11,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--yellow-400);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(245,158,11,0.45);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 13px 28px;
+      border-radius: 8px;
+      transition: all var(--transition);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.55);
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+    }
+    .trust-item .check {
+      width: 20px;
+      height: 20px;
+      background: var(--yellow-500);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--blue-900);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       SECTION SHARED
+    ============================================================ */
+    section { padding: 80px 20px; }
+    .section-label {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--blue-400);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      color: var(--blue-900);
+      line-height: 1.2;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    #services { background: var(--gray-50); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 30px 28px;
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+    }
+    .service-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+      border-color: var(--blue-400);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--blue-600), var(--blue-500));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 12px rgba(30,77,183,0.25);
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--blue-900);
+      margin-bottom: 8px;
+    }
+    .service-card p {
+      font-size: 0.93rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       WHY CHOOSE US (TRUST BADGES)
+    ============================================================ */
+    #trust { background: var(--blue-900); color: var(--white); }
+    #trust .section-title { color: var(--white); }
+    #trust .section-sub { color: rgba(255,255,255,0.7); }
+    #trust .section-label { color: var(--yellow-400); }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .trust-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      transition: background var(--transition);
+    }
+    .trust-card:hover { background: rgba(255,255,255,0.10); }
+
+    .trust-card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .trust-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--yellow-400);
+      margin-bottom: 8px;
+    }
+    .trust-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       REVIEWS
+    ============================================================ */
+    #reviews { background: var(--white); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+    }
+
+    .stars {
+      color: var(--yellow-500);
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .review-text {
+      font-size: 0.97rem;
+      color: var(--gray-700);
+      line-height: 1.72;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reviewer-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-600), var(--blue-400));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .reviewer-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--blue-900);
+    }
+    .reviewer-loc {
+      font-size: 0.82rem;
+      color: var(--gray-400);
+      margin-top: 2px;
+    }
+
+    .google-badge {
+      position: absolute;
+      top: 20px;
+      right: 22px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gray-400);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ============================================================
+       CONTACT FORM
+    ============================================================ */
+    #contact { background: var(--gray-50); }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--blue-900);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .contact-info p {
+      color: var(--gray-600);
+      font-size: 0.97rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .contact-details {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .contact-details li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--gray-700);
+    }
+    .contact-details li .icon {
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .contact-details li strong { color: var(--blue-900); font-weight: 700; }
+    .contact-details a { color: var(--blue-500); font-weight: 600; }
+    .contact-details a:hover { color: var(--blue-400); }
+
+    /* Form */
+    .quote-form {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 36px 34px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--blue-900);
+      margin-bottom: 6px;
+    }
+    .form-sub {
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      margin-bottom: 24px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--gray-800);
+      background: var(--gray-50);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 7px;
+      padding: 11px 14px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue-400);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+      background: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--blue-500);
+      color: var(--white);
+      font-family: inherit;
+      font-size: 1.02rem;
+      font-weight: 800;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      margin-top: 6px;
+      box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+    }
+    .btn-submit:hover {
+      background: var(--blue-400);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37,99,235,0.38);
+    }
+
+    .form-success {
+      display: none;
+      background: #dcfce7;
+      border: 1.5px solid #86efac;
+      border-radius: 8px;
+      padding: 18px 20px;
+      text-align: center;
+      color: #15803d;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 16px;
+    }
+    .form-success.show { display: block; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      background: var(--blue-900);
+      color: rgba(255,255,255,0.72);
+      padding: 56px 20px 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 44px;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .footer-brand h3 span { color: var(--yellow-400); }
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer-brand .phone {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--yellow-400);
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .footer-brand .license {
+      font-size: 0.78rem;
+      margin-top: 8px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer-col h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col li { font-size: 0.88rem; }
+    .footer-col a { color: rgba(255,255,255,0.65); transition: color var(--transition); }
+    .footer-col a:hover { color: var(--yellow-400); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.8rem;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.5); }
+    .footer-bottom a:hover { color: var(--yellow-400); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .nav-links, .btn-call-nav { display: none; }
+      .hamburger { display: flex; }
+
+      #hero { padding: 60px 20px 60px; }
+
+      .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+      .contact-info { order: 2; }
+      .quote-form { order: 1; padding: 26px 20px; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 500px) {
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       DEMO BANNER
+  ============================================================ -->
+  <div id="demo-banner">
+    🔵 DEMO — Example 48-hour website built by Lifelutions.&nbsp;&nbsp;
+    <a href="index.html">← Back to Lifelutions</a>
+  </div>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav id="main-nav">
+    <div class="container nav-inner">
+      <a class="nav-logo" href="#">⚡ NorthPeak <span>Electric</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#trust">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <a class="btn-call-nav" href="tel:+14165550142">
+            📞 Call (416) 555-0142
+          </a>
+        </li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" role="navigation">
+      <ul>
+        <li><a href="#services" class="mobile-link">Services</a></li>
+        <li><a href="#trust" class="mobile-link">About</a></li>
+        <li><a href="#reviews" class="mobile-link">Reviews</a></li>
+        <li><a href="#contact" class="mobile-link">Contact</a></li>
+      </ul>
+      <a class="btn-call-mobile" href="tel:+14165550142">📞 Call (416) 555-0142</a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">⚡ Same-Day Service Available</div>
+
+        <h1 class="hero-headline">
+          Licensed Electricians You Can Trust —<br/>
+          <span class="accent">Same-Day Service</span> in the GTA
+        </h1>
+
+        <p class="hero-sub">
+          From panel upgrades and EV charger installations to emergency repairs,
+          NorthPeak Electric delivers honest, code-compliant electrical work —
+          on time, on budget, and without surprises on your invoice.
+        </p>
+
+        <div class="hero-ctas">
+          <a class="btn-primary" href="#contact">Get a Free Quote</a>
+          <a class="btn-secondary" href="tel:+14165550142">
+            📞 Call (416) 555-0142
+          </a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="trust-item">
+            <div class="check">✓</div>
+            ESA Licensed &amp; Insured
+          </div>
+          <div class="trust-item">
+            <div class="check">★</div>
+            5-Star Rated on Google
+          </div>
+          <div class="trust-item">
+            <div class="check">✓</div>
+            15+ Years in the GTA
+          </div>
+          <div class="trust-item">
+            <div class="check">✓</div>
+            No Hidden Fees
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section id="services">
+    <div class="container">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Electrical Services for Homes &amp; Businesses</h2>
+      <p class="section-sub">
+        Whether you're renovating, adding a new circuit, or dealing with an urgent electrical issue,
+        our licensed team handles it safely and to code — every time.
+      </p>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3>Panel Upgrades</h3>
+          <p>Replace an outdated 100-amp panel with a modern 200-amp or 400-amp service. Eliminate fire risks from old fuse boxes and get the capacity your home or business demands.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔌</div>
+          <h3>EV Charger Installation</h3>
+          <p>Certified Level 2 EV charger installation (240V) for all vehicle makes. We handle the permit, inspection, and installation — you just plug in and charge overnight.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💡</div>
+          <h3>Lighting &amp; Pot Lights</h3>
+          <p>Recessed pot lights, LED upgrades, dimmer switches, exterior lighting, and full commercial lighting designs. Brighten your space and cut your hydro bill at the same time.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3>Wiring &amp; Rewiring</h3>
+          <p>New construction rough-in, basement finishing, kitchen and bathroom circuits, knob-and-tube replacement, and aluminum wiring remediation — done right the first time.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🚨</div>
+          <h3>Emergency Repairs</h3>
+          <p>Power outages, tripped breakers that won't reset, burning smells, or sparking outlets — our emergency team is available 7 days a week with a fast response across the GTA.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📋</div>
+          <h3>Electrical Inspections</h3>
+          <p>Pre-purchase home inspections, ESA compliance certificates, and landlord safety inspections. We provide clear written reports so you can buy, sell, or rent with confidence.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRUST / WHY CHOOSE US
+  ============================================================ -->
+  <section id="trust">
+    <div class="container">
+      <p class="section-label">Why NorthPeak</p>
+      <h2 class="section-title">Built on Trust. Backed by Credentials.</h2>
+      <p class="section-sub">
+        We know you have options. Here's why homeowners and property managers across Toronto
+        keep calling us back — and recommending us to their neighbours.
+      </p>
+
+      <div class="trust-grid">
+
+        <div class="trust-card">
+          <span class="trust-card-icon">🏅</span>
+          <h3>ESA Licensed</h3>
+          <p>Every job is performed by a licensed electrical contractor registered with the Electrical Safety Authority of Ontario. Permits pulled, inspections passed.</p>
+        </div>
+
+        <div class="trust-card">
+          <span class="trust-card-icon">🛡️</span>
+          <h3>Fully Insured</h3>
+          <p>$2 million general liability insurance and WSIB coverage on every technician. You and your property are fully protected — no exceptions.</p>
+        </div>
+
+        <div class="trust-card">
+          <span class="trust-card-icon">💰</span>
+          <h3>Upfront Pricing</h3>
+          <p>You approve the price before we touch a wire. No surprise charges, no after-the-fact add-ons. What we quote is what you pay.</p>
+        </div>
+
+        <div class="trust-card">
+          <span class="trust-card-icon">🔒</span>
+          <h3>Workmanship Warranty</h3>
+          <p>All labour is covered by our 2-year workmanship warranty. If anything we installed or repaired fails, we come back and fix it — at no cost to you.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REVIEWS
+  ============================================================ -->
+  <section id="reviews">
+    <div class="container">
+      <p class="section-label">Customer Reviews</p>
+      <h2 class="section-title">Trusted by Homeowners Across Toronto</h2>
+      <p class="section-sub">
+        Don't take our word for it. Here's what real customers say about working with NorthPeak Electric.
+      </p>
+
+      <div class="reviews-grid">
+
+        <div class="review-card">
+          <div class="google-badge">Google ★</div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            "NorthPeak upgraded our 100-amp panel to 200-amp ahead of a kitchen renovation. Marcus was on time, explained every step, pulled the permit without us having to ask, and cleaned up completely after. The ESA inspector was in and out in 20 minutes. Absolutely flawless."
+          </p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">SK</div>
+            <div>
+              <div class="reviewer-name">Sarah K.</div>
+              <div class="reviewer-loc">Leslieville, Toronto</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="google-badge">Google ★</div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            "Called NorthPeak at 7 PM on a Sunday — half my basement had lost power right before my in-laws arrived. They had someone at my door within 90 minutes, diagnosed a faulty breaker, had it replaced and everything running by 9 PM. Reasonable emergency rate too. Saved the weekend."
+          </p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">DP</div>
+            <div>
+              <div class="reviewer-name">Daniel P.</div>
+              <div class="reviewer-loc">North York, Toronto</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="google-badge">Google ★</div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            "Had NorthPeak install a Level 2 EV charger for my Tesla in the garage. They handled the permit, ran a dedicated 240V circuit, and mounted the charger exactly where I wanted it. Very clean work, no fishing through the drywall unnecessarily. Would hire again without hesitation."
+          </p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">AW</div>
+            <div>
+              <div class="reviewer-name">Alicia W.</div>
+              <div class="reviewer-loc">Etobicoke, Toronto</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT FORM
+  ============================================================ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-wrapper">
+
+        <!-- Left info panel -->
+        <div class="contact-info">
+          <p class="section-label">Free Quote</p>
+          <h2>Let's Talk About Your Project</h2>
+          <p>
+            Fill out the form and we'll call you back within the hour during business hours.
+            For urgent electrical issues, call us directly — we pick up.
+          </p>
+
+          <ul class="contact-details">
+            <li>
+              <span class="icon">📞</span>
+              <span>
+                <strong>Phone</strong><br/>
+                <a href="tel:+14165550142">(416) 555-0142</a>
+              </span>
+            </li>
+            <li>
+              <span class="icon">✉️</span>
+              <span>
+                <strong>Email</strong><br/>
+                <a href="mailto:info@northpeakelectric.ca">info@northpeakelectric.ca</a>
+              </span>
+            </li>
+            <li>
+              <span class="icon">🕐</span>
+              <span>
+                <strong>Hours</strong><br/>
+                Mon–Fri: 7:00 AM – 7:00 PM<br/>
+                Sat: 8:00 AM – 4:00 PM<br/>
+                Sun: Emergency calls only
+              </span>
+            </li>
+            <li>
+              <span class="icon">📍</span>
+              <span>
+                <strong>Service Area</strong><br/>
+                Toronto, North York, Etobicoke, Scarborough, Mississauga, Brampton, Markham, Richmond Hill
+              </span>
+            </li>
+            <li>
+              <span class="icon">🏅</span>
+              <span>
+                <strong>ESA License</strong><br/>
+                EC-0049187 (Electrical Contractor)
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Form -->
+        <div>
+          <form class="quote-form" id="quote-form" novalidate>
+            <div class="form-title">Get Your Free Quote</div>
+            <div class="form-sub">No obligation. We'll call you back within the hour.</div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">Full Name *</label>
+                <input type="text" id="fname" name="name" placeholder="Jane Smith" required />
+              </div>
+              <div class="form-group">
+                <label for="fphone">Phone Number *</label>
+                <input type="tel" id="fphone" name="phone" placeholder="(416) 555-0000" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="femail">Email Address</label>
+              <input type="email" id="femail" name="email" placeholder="jane@example.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="fservice">Service Needed *</label>
+              <select id="fservice" name="service" required>
+                <option value="" disabled selected>Select a service…</option>
+                <option>Panel Upgrade</option>
+                <option>EV Charger Installation</option>
+                <option>Lighting / Pot Lights</option>
+                <option>Wiring &amp; Rewiring</option>
+                <option>Emergency Repair</option>
+                <option>Electrical Inspection</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="fmessage">Tell Us About Your Project</label>
+              <textarea id="fmessage" name="message" placeholder="e.g. I need a 200-amp panel upgrade in a 1960s semi-detached in East York…"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Send My Free Quote Request →</button>
+
+            <div class="form-success" id="form-success">
+              ✅ Thanks! We'll call you within the hour.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <h3>⚡ NorthPeak <span>Electric</span></h3>
+          <p>Licensed electrical contractor proudly serving the Greater Toronto Area since 2009. ESA-licensed, fully insured, and committed to doing the job right the first time.</p>
+          <a class="phone" href="tel:+14165550142">(416) 555-0142</a>
+          <div class="license">ESA Electrical Contractor Licence: EC-0049187</div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Panel Upgrades</a></li>
+            <li><a href="#services">EV Charger Installation</a></li>
+            <li><a href="#services">Lighting &amp; Pot Lights</a></li>
+            <li><a href="#services">Wiring &amp; Rewiring</a></li>
+            <li><a href="#services">Emergency Repairs</a></li>
+            <li><a href="#services">Electrical Inspections</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Hours &amp; Area</h4>
+          <ul>
+            <li>Mon–Fri: 7 AM – 7 PM</li>
+            <li>Saturday: 8 AM – 4 PM</li>
+            <li>Sunday: Emergencies Only</li>
+            <li style="margin-top:10px; color:rgba(255,255,255,0.5)">Serving:</li>
+            <li>Toronto &amp; North York</li>
+            <li>Etobicoke &amp; Scarborough</li>
+            <li>Mississauga &amp; Brampton</li>
+            <li>Markham &amp; Richmond Hill</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2024 NorthPeak Electric. All rights reserved. ESA Lic. EC-0049187.</div>
+        <div>
+          Website built in 48 hours by
+          <a href="index.html">Lifelutions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JS
+  ============================================================ -->
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', function () {
+      const isOpen = mobileMenu.style.display === 'block';
+      mobileMenu.style.display = isOpen ? 'none' : 'block';
+      hamburger.classList.toggle('open', !isOpen);
+      hamburger.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.mobile-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.style.display = 'none';
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Contact form submit
+    const form = document.getElementById('quote-form');
+    const successMsg = document.getElementById('form-success');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Basic validation
+      const name = form.querySelector('#fname').value.trim();
+      const phone = form.querySelector('#fphone').value.trim();
+      const service = form.querySelector('#fservice').value;
+
+      if (!name || !phone || !service) {
+        alert('Please fill in your name, phone number, and service type so we can call you back.');
+        return;
+      }
+
+      // Simulate success
+      form.querySelectorAll('input, select, textarea, button').forEach(function (el) {
+        el.disabled = true;
+      });
+      successMsg.classList.add('show');
+      successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // Smooth scroll offset for sticky nav + banner
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const offset = 110; // nav + banner height
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

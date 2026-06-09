@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lead Automation Dashboard — BrightHome Services | Lifelutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-base:      #0d0f1a;
+    --bg-surface:   #131625;
+    --bg-card:      #1a1d2e;
+    --bg-card-alt:  #1f2235;
+    --border:       rgba(255,255,255,0.07);
+    --border-med:   rgba(255,255,255,0.12);
+    --purple:       #7c5cff;
+    --purple-light: #9b7fff;
+    --purple-dim:   rgba(124,92,255,0.15);
+    --teal:         #19d3c5;
+    --teal-dim:     rgba(25,211,197,0.15);
+    --text-primary: #e8eaf6;
+    --text-secondary: #8b90b0;
+    --text-muted:   #555a7a;
+    --green:        #22c55e;
+    --green-dim:    rgba(34,197,94,0.15);
+    --amber:        #f59e0b;
+    --amber-dim:    rgba(245,158,11,0.15);
+    --red:          #ef4444;
+    --red-dim:      rgba(239,68,68,0.15);
+    --sidebar-w:    230px;
+    --banner-h:     40px;
+  }
+  html { font-size: 14px; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-base);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* ── Demo Banner ── */
+  .demo-banner {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--banner-h);
+    background: linear-gradient(90deg, #1a1340 0%, #0f1a2e 50%, #0d1a1a 100%);
+    border-bottom: 1px solid var(--border-med);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+  .demo-banner .dot-blue {
+    width: 8px; height: 8px;
+    background: #3b82f6;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #3b82f6;
+    flex-shrink: 0;
+  }
+  .demo-banner a {
+    color: var(--purple-light);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s;
+  }
+  .demo-banner a:hover { color: var(--teal); }
+
+  /* ── App Shell ── */
+  .app-shell {
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - var(--banner-h));
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: var(--sidebar-w);
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: var(--banner-h);
+    height: calc(100vh - var(--banner-h));
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .sidebar-logo {
+    padding: 22px 20px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-logo .logo-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--purple-light), var(--teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .sidebar-logo .logo-sub {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .sidebar-client {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .client-avatar {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--teal-dim), var(--purple-dim));
+    border: 1.5px solid var(--teal);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--teal);
+  }
+  .client-info .client-name {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .client-info .client-type {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+  .sidebar-nav {
+    padding: 14px 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .nav-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    padding: 8px 10px 4px;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    user-select: none;
+  }
+  .nav-item:hover { background: var(--bg-card); color: var(--text-primary); }
+  .nav-item.active {
+    background: var(--purple-dim);
+    color: var(--purple-light);
+  }
+  .nav-item.active .nav-icon { color: var(--purple); }
+  .nav-icon { font-size: 16px; width: 20px; text-align: center; flex-shrink: 0; }
+  .nav-badge {
+    margin-left: auto;
+    background: var(--purple);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 20px;
+    min-width: 18px;
+    text-align: center;
+  }
+  .sidebar-footer {
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 500;
+  }
+  .live-dot {
+    width: 7px; height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse-green 2s ease-in-out infinite;
+  }
+  @keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+    50%       { box-shadow: 0 0 0 5px rgba(34,197,94,0); }
+  }
+
+  /* ── Main Content ── */
+  .main-content {
+    flex: 1;
+    padding: 28px 28px 40px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+  }
+
+  /* ── Page Header ── */
+  .page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    animation: fadeInDown 0.5s ease both;
+  }
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .page-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--purple);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(124,92,255,0.3);
+  }
+  .btn-primary:hover {
+    background: var(--purple-light);
+    box-shadow: 0 0 28px rgba(124,92,255,0.5);
+    transform: translateY(-1px);
+  }
+  .btn-ghost {
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-med);
+  }
+  .btn-ghost:hover {
+    background: var(--bg-card-alt);
+    color: var(--text-primary);
+  }
+  .date-badge {
+    background: var(--bg-card);
+    border: 1px solid var(--border-med);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  /* ── Stat Cards ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    animation: fadeInUp 0.5s ease 0.1s both;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(124,92,255,0.05));
+    pointer-events: none;
+  }
+  .stat-card:hover {
+    border-color: var(--border-med);
+    transform: translateY(-2px);
+  }
+  .stat-card.accent-teal::before { background: linear-gradient(135deg, transparent 60%, rgba(25,211,197,0.07)); }
+  .stat-card.accent-green::before { background: linear-gradient(135deg, transparent 60%, rgba(34,197,94,0.07)); }
+  .stat-card.accent-amber::before { background: linear-gradient(135deg, transparent 60%, rgba(245,158,11,0.07)); }
+  .stat-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    margin-bottom: 14px;
+  }
+  .stat-icon.purple { background: var(--purple-dim); }
+  .stat-icon.teal   { background: var(--teal-dim); }
+  .stat-icon.green  { background: var(--green-dim); }
+  .stat-icon.amber  { background: var(--amber-dim); }
+  .stat-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .stat-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .stat-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 20px;
+  }
+  .trend.up   { color: var(--green); background: var(--green-dim); }
+  .trend.down { color: var(--red);   background: var(--red-dim); }
+  .trend.flat { color: var(--amber); background: var(--amber-dim); }
+  .stat-desc {
+    font-size: 11.5px;
+    color: var(--text-muted);
+  }
+  .stat-bar-wrap {
+    margin-top: 12px;
+    height: 3px;
+    background: var(--bg-base);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .stat-bar {
+    height: 100%;
+    border-radius: 2px;
+    animation: barGrow 1.2s cubic-bezier(0.4,0,0.2,1) 0.4s both;
+    transform-origin: left;
+  }
+  .stat-bar.purple { background: linear-gradient(90deg, var(--purple), var(--purple-light)); }
+  .stat-bar.teal   { background: linear-gradient(90deg, var(--teal), #6cf0e8); }
+  .stat-bar.green  { background: linear-gradient(90deg, var(--green), #4ade80); }
+  .stat-bar.amber  { background: linear-gradient(90deg, var(--amber), #fbbf24); }
+  @keyframes barGrow {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  /* ── Two-column row ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 20px;
+    animation: fadeInUp 0.5s ease 0.2s both;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--purple);
+    box-shadow: 0 0 6px var(--purple);
+  }
+  .card-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .pill-filter {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border-med);
+    background: transparent;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+  }
+  .pill-filter.active {
+    background: var(--purple-dim);
+    border-color: var(--purple);
+    color: var(--purple-light);
+  }
+  .pill-filter:hover:not(.active) {
+    background: var(--bg-card-alt);
+    color: var(--text-primary);
+  }
+
+  /* ── Lead Pipeline Table ── */
+  .pipeline-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .pipeline-table th {
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .pipeline-table td {
+    padding: 13px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    vertical-align: middle;
+  }
+  .pipeline-table tr:last-child td { border-bottom: none; }
+  .pipeline-table tbody tr {
+    transition: background 0.15s;
+    animation: fadeInRow 0.4s ease both;
+  }
+  .pipeline-table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+  .pipeline-table tbody tr:nth-child(2) { animation-delay: 0.10s; }
+  .pipeline-table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+  .pipeline-table tbody tr:nth-child(4) { animation-delay: 0.20s; }
+  .pipeline-table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+  .pipeline-table tbody tr:nth-child(6) { animation-delay: 0.30s; }
+  @keyframes fadeInRow {
+    from { opacity: 0; transform: translateX(-8px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .pipeline-table tbody tr:hover { background: var(--bg-card-alt); }
+  .lead-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .lead-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .source-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-med);
+    white-space: nowrap;
+  }
+  .score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .score-high  { background: var(--green-dim);  color: var(--green);  }
+  .score-med   { background: var(--amber-dim);  color: var(--amber);  }
+  .score-low   { background: var(--red-dim);    color: var(--red);    }
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+  .status-new      { background: var(--purple-dim); color: var(--purple-light); }
+  .status-contact  { background: var(--teal-dim);   color: var(--teal);         }
+  .status-booked   { background: var(--green-dim);  color: var(--green);        }
+  .time-cell { font-size: 11.5px; color: var(--text-muted); white-space: nowrap; }
+  .action-btn {
+    background: transparent;
+    border: 1px solid var(--border-med);
+    color: var(--text-muted);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .action-btn:hover {
+    border-color: var(--purple);
+    color: var(--purple-light);
+    background: var(--purple-dim);
+  }
+
+  /* ── Activity Feed ── */
+  .activity-feed {
+    padding: 0;
+    list-style: none;
+    overflow-y: auto;
+    max-height: 340px;
+  }
+  .activity-item {
+    display: flex;
+    gap: 12px;
+    padding: 13px 20px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+    animation: fadeInUp 0.4s ease both;
+  }
+  .activity-item:last-child { border-bottom: none; }
+  .activity-item:hover { background: var(--bg-card-alt); }
+  .activity-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .activity-body { flex: 1; min-width: 0; }
+  .activity-text {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+  .activity-text strong { color: var(--text-primary); font-weight: 600; }
+  .activity-time {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+  .activity-item:nth-child(1) { animation-delay: 0.05s; }
+  .activity-item:nth-child(2) { animation-delay: 0.10s; }
+  .activity-item:nth-child(3) { animation-delay: 0.15s; }
+  .activity-item:nth-child(4) { animation-delay: 0.20s; }
+  .activity-item:nth-child(5) { animation-delay: 0.25s; }
+  .activity-item:nth-child(6) { animation-delay: 0.30s; }
+  .activity-item:nth-child(7) { animation-delay: 0.35s; }
+
+  /* ── Workflow Panel ── */
+  .workflow-section {
+    animation: fadeInUp 0.5s ease 0.3s both;
+  }
+  .workflow-container {
+    padding: 24px 20px 20px;
+  }
+  .workflow-nodes {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    row-gap: 16px;
+  }
+  .wf-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+  }
+  .wf-pill {
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+    position: relative;
+    min-width: 110px;
+    max-width: 140px;
+    border: 1.5px solid;
+    transition: transform 0.2s;
+    cursor: default;
+    white-space: nowrap;
+  }
+  .wf-pill:hover { transform: translateY(-2px); }
+  .wf-pill.c1 { background: rgba(124,92,255,0.12); border-color: var(--purple); color: var(--purple-light); }
+  .wf-pill.c2 { background: rgba(25,211,197,0.10); border-color: var(--teal);   color: var(--teal);         }
+  .wf-pill.c3 { background: rgba(245,158,11,0.10); border-color: var(--amber);  color: var(--amber);        }
+  .wf-pill.c4 { background: rgba(34,197,94,0.10);  border-color: var(--green);  color: var(--green);        }
+  .wf-pill.c5 { background: rgba(139,144,176,0.10);border-color: var(--text-muted); color: var(--text-secondary); }
+  .wf-pill-icon { font-size: 18px; margin-bottom: 2px; display: block; }
+  .wf-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .wf-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    margin-top: -14px;
+    flex-shrink: 0;
+  }
+  .wf-arrow-line {
+    width: 28px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--border-med), var(--purple));
+    position: relative;
+  }
+  .wf-arrow-line::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -3px;
+    border-left: 6px solid var(--purple);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+  .wf-step-num {
+    width: 18px; height: 18px;
+    background: var(--bg-base);
+    border: 1.5px solid var(--border-med);
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -9px;
+    right: -9px;
+  }
+  .wf-node-wrap { position: relative; }
+  .workflow-footer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 20px;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .wf-stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+  }
+  .wf-stat-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .wf-stat strong { color: var(--text-primary); font-weight: 600; }
+  .wf-stat span   { color: var(--text-muted); }
+
+  /* ── Bottom Row ── */
+  .bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    animation: fadeInUp 0.5s ease 0.35s both;
+  }
+
+  /* ── Keyframes ── */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border-med); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+  /* ── Responsive ── */
+  @media (max-width: 1100px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col   { grid-template-columns: 1fr; }
+    .bottom-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px) {
+    .sidebar { display: none; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .main-content { padding: 16px; }
+    .workflow-nodes { flex-direction: column; align-items: flex-start; }
+    .wf-arrow { transform: rotate(90deg); margin: -6px 0; margin-left: 53px; }
+  }
+
+  /* ── Pulsing live ring on stat card ── */
+  .pulse-ring {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse-green 2s ease-in-out infinite;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+
+  /* ── Tooltip on wf nodes ── */
+  .wf-pill[data-tip] { cursor: help; }
+  .wf-pill[data-tip]:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-base);
+    border: 1px solid var(--border-med);
+    color: var(--text-secondary);
+    font-size: 10.5px;
+    font-weight: 400;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 10;
+    font-family: 'Inter', sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Demo Banner ── -->
+<div class="demo-banner">
+  <span class="dot-blue"></span>
+  <span>DEMO — Example automation dashboard built by Lifelutions</span>
+  <span style="color:var(--text-muted)">·</span>
+  <a href="index.html">← Back to Lifelutions</a>
+</div>
+
+<!-- ── App Shell ── -->
+<div class="app-shell">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-text">◆ Lifelutions</div>
+      <div class="logo-sub">Automations Platform</div>
+    </div>
+    <div class="sidebar-client">
+      <div class="client-avatar">BH</div>
+      <div class="client-info">
+        <div class="client-name">BrightHome Services</div>
+        <div class="client-type">Home Services · Toronto</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-label">Main</div>
+      <div class="nav-item active">
+        <span class="nav-icon">▦</span> Dashboard
+      </div>
+      <div class="nav-item">
+        <span class="nav-icon">◎</span> Leads
+        <span class="nav-badge">47</span>
+      </div>
+      <div class="nav-item">
+        <span class="nav-icon">⟳</span> Workflows
+      </div>
+      <div class="nav-item">
+        <span class="nav-icon">✉</span> Messages
+        <span class="nav-badge">8</span>
+      </div>
+      <div class="nav-label" style="margin-top:8px">System</div>
+      <div class="nav-item">
+        <span class="nav-icon">☁</span> Integrations
+      </div>
+      <div class="nav-item">
+        <span class="nav-icon">⚙</span> Settings
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="live-indicator">
+        <span class="live-dot"></span>
+        Automation running
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <div class="page-title">Lead Automation Dashboard</div>
+        <div class="page-subtitle"><span class="pulse-ring"></span>Live · Last synced 42 seconds ago</div>
+      </div>
+      <div class="header-actions">
+        <div class="date-badge">Jun 2 – Jun 9, 2025</div>
+        <button class="btn btn-ghost">↓ Export</button>
+        <button class="btn btn-primary">+ Add Workflow</button>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-icon purple">🎯</div>
+        <div class="stat-label">New Leads</div>
+        <div class="stat-value" data-target="47" id="stat-leads">47</div>
+        <div class="stat-meta">
+          <span class="trend up">▲ +18%</span>
+          <span class="stat-desc">vs. last week</span>
+        </div>
+        <div class="stat-bar-wrap">
+          <div class="stat-bar purple" style="width:72%"></div>
+        </div>
+      </div>
+      <div class="stat-card accent-teal">
+        <div class="stat-icon teal">⚡</div>
+        <div class="stat-label">Auto-Replies Sent</div>
+        <div class="stat-value" data-target="132" id="stat-replies">132</div>
+        <div class="stat-meta">
+          <span class="trend up">▲ +31%</span>
+          <span class="stat-desc">this week</span>
+        </div>
+        <div class="stat-bar-wrap">
+          <div class="stat-bar teal" style="width:88%"></div>
+        </div>
+      </div>
+      <div class="stat-card accent-green">
+        <div class="stat-icon green">⏱</div>
+        <div class="stat-label">Avg Response Time</div>
+        <div class="stat-value" id="stat-response" style="font-size:22px;padding-top:4px">&lt; 2 min</div>
+        <div class="stat-meta">
+          <span class="trend up">▲ 94% faster</span>
+          <span class="stat-desc">vs. manual</span>
+        </div>
+        <div class="stat-bar-wrap">
+          <div class="stat-bar green" style="width:94%"></div>
+        </div>
+      </div>
+      <div class="stat-card accent-amber">
+        <div class="stat-icon amber">📈</div>
+        <div class="stat-label">Conversion Rate</div>
+        <div class="stat-value" data-target="23" id="stat-conv" style="font-size:30px">23%</div>
+        <div class="stat-meta">
+          <span class="trend up">▲ +5 pts</span>
+          <span class="stat-desc">vs. last month</span>
+        </div>
+        <div class="stat-bar-wrap">
+          <div class="stat-bar amber" style="width:23%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lead Pipeline + Activity Feed -->
+    <div class="two-col">
+
+      <!-- Lead Pipeline Table -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="card-title-dot"></span>
+            Lead Pipeline
+          </div>
+          <div class="card-actions">
+            <button class="pill-filter active">All</button>
+            <button class="pill-filter">New</button>
+            <button class="pill-filter">Booked</button>
+          </div>
+        </div>
+        <table class="pipeline-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Source</th>
+              <th>AI Score</th>
+              <th>Status</th>
+              <th>Time</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="lead-name">
+                  <div class="lead-avatar" style="background:rgba(124,92,255,0.15);color:var(--purple-light)">SM</div>
+                  Sarah M.
+                </div>
+              </td>
+              <td><span class="source-chip">🌐 Website Form</span></td>
+              <td><span class="score-badge score-high">● High</span></td>
+              <td><span class="status-badge status-booked">✓ Booked</span></td>
+              <td class="time-cell">2 min ago</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="lead-name">
+                  <div class="lead-avatar" style="background:rgba(25,211,197,0.15);color:var(--teal)">JR</div>
+                  James R.
+                </div>
+              </td>
+              <td><span class="source-chip">🔍 Google</span></td>
+              <td><span class="score-badge score-high">● High</span></td>
+              <td><span class="status-badge status-contact">→ Contacted</span></td>
+              <td class="time-cell">18 min ago</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="lead-name">
+                  <div class="lead-avatar" style="background:rgba(245,158,11,0.15);color:var(--amber)">AT</div>
+                  Anika T.
+                </div>
+              </td>
+              <td><span class="source-chip">📘 Facebook</span></td>
+              <td><span class="score-badge score-med">◐ Med</span></td>
+              <td><span class="status-badge status-contact">→ Contacted</span></td>
+              <td class="time-cell">45 min ago</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="lead-name">
+                  <div class="lead-avatar" style="background:rgba(34,197,94,0.15);color:var(--green)">DK</div>
+                  David K.
+                </div>
+              </td>
+              <td><span class="source-chip">🌐 Website Form</span></td>
+              <td><span class="score-badge score-high">● High</span></td>
+              <td><span class="status-badge status-booked">✓ Booked</span></td>
+              <td class="time-cell">1 hr ago</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="lead-name">
+                  <div class="lead-avatar" style="background:rgba(124,92,255,0.15);color:var(--purple-light)">LP</div>
+                  Linda P.
+                </div>
+              </td>
+              <td><span class="source-chip">🔍 Google</span></td>
+              <td><span class="score-badge score-med">◐ Med</span></td>
+              <td><span class="status-badge status-new">✦ New</span></td>
+              <td class="time-cell">2 hrs ago</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="lead-name">
+                  <div class="lead-avatar" style="background:rgba(239,68,68,0.12);color:var(--red)">MO</div>
+                  Marcus O.
+                </div>
+              </td>
+              <td><span class="source-chip">📘 Facebook</span></td>
+              <td><span class="score-badge score-low">○ Low</span></td>
+              <td><span class="status-badge status-new">✦ New</span></td>
+              <td class="time-cell">3 hrs ago</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- AI Activity Feed -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="card-title-dot" style="background:var(--teal);box-shadow:0 0 6px var(--teal)"></span>
+            AI Activity Feed
+          </div>
+          <div class="live-indicator">
+            <span class="live-dot"></span>
+            Live
+          </div>
+        </div>
+        <ul class="activity-feed">
+          <li class="activity-item">
+            <div class="activity-icon" style="background:var(--green-dim)">✓</div>
+            <div class="activity-body">
+              <div class="activity-text">Booked consultation for <strong>Sarah M.</strong> — Jun 12, 10:00 AM via Google Calendar</div>
+              <div class="activity-time">2 min ago</div>
+            </div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon" style="background:var(--purple-dim)">✉</div>
+            <div class="activity-body">
+              <div class="activity-text">Sent personalized follow-up email + SMS to <strong>Sarah M.</strong> (cleaning quote)</div>
+              <div class="activity-time">3 min ago</div>
+            </div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon" style="background:var(--teal-dim)">★</div>
+            <div class="activity-body">
+              <div class="activity-text">Scored lead <strong>James R.</strong> from Google as <span style="color:var(--green);font-weight:600">High Intent</span> — repeated price-check visits</div>
+              <div class="activity-time">18 min ago</div>
+            </div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon" style="background:var(--purple-dim)">✉</div>
+            <div class="activity-body">
+              <div class="activity-text">Auto-replied to <strong>Anika T.</strong>'s Facebook inquiry with handyman availability</div>
+              <div class="activity-time">46 min ago</div>
+            </div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon" style="background:var(--green-dim)">✓</div>
+            <div class="activity-body">
+              <div class="activity-text">CRM updated for <strong>David K.</strong> — booking confirmed, invoice draft created</div>
+              <div class="activity-time">1 hr ago</div>
+            </div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon" style="background:var(--amber-dim)">⚠</div>
+            <div class="activity-body">
+              <div class="activity-text">Flagged <strong>Linda P.</strong> for manual review — unusual service area (Mississauga)</div>
+              <div class="activity-time">2 hrs ago</div>
+            </div>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon" style="background:var(--teal-dim)">★</div>
+            <div class="activity-body">
+              <div class="activity-text">New lead captured from website form — enriched with address & property type</div>
+              <div class="activity-time">3 hrs ago</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Live Workflow Panel -->
+    <div class="workflow-section">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="card-title-dot" style="background:var(--amber);box-shadow:0 0 6px var(--amber)"></span>
+            Live Workflow — Lead to Booking
+          </div>
+          <div class="card-actions">
+            <span style="font-size:11px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:5px">
+              <span class="live-dot"></span> Active · 6 runs today
+            </span>
+          </div>
+        </div>
+        <div class="workflow-container">
+          <div class="workflow-nodes">
+            <div class="wf-node">
+              <div class="wf-node-wrap">
+                <div class="wf-pill c1" data-tip="Via website form, Google, or Facebook">
+                  <span class="wf-pill-icon">📥</span>
+                  New Lead Captured
+                </div>
+                <div class="wf-step-num">1</div>
+              </div>
+              <div class="wf-label">Any source</div>
+            </div>
+            <div class="wf-arrow"><div class="wf-arrow-line"></div></div>
+            <div class="wf-node">
+              <div class="wf-node-wrap">
+                <div class="wf-pill c2" data-tip="GPT-4 scores intent + enriches contact data">
+                  <span class="wf-pill-icon">🧠</span>
+                  AI Scores & Enriches
+                </div>
+                <div class="wf-step-num">2</div>
+              </div>
+              <div class="wf-label">Under 30 sec</div>
+            </div>
+            <div class="wf-arrow"><div class="wf-arrow-line"></div></div>
+            <div class="wf-node">
+              <div class="wf-node-wrap">
+                <div class="wf-pill c3" data-tip="Personalized email via SendGrid + SMS via Twilio">
+                  <span class="wf-pill-icon">📨</span>
+                  Email + SMS Sent
+                </div>
+                <div class="wf-step-num">3</div>
+              </div>
+              <div class="wf-label">Auto-personalized</div>
+            </div>
+            <div class="wf-arrow"><div class="wf-arrow-line"></div></div>
+            <div class="wf-node">
+              <div class="wf-node-wrap">
+                <div class="wf-pill c4" data-tip="Added to Google Calendar with buffer time">
+                  <span class="wf-pill-icon">📅</span>
+                  Booked in Calendar
+                </div>
+                <div class="wf-step-num">4</div>
+              </div>
+              <div class="wf-label">Instant booking</div>
+            </div>
+            <div class="wf-arrow"><div class="wf-arrow-line"></div></div>
+            <div class="wf-node">
+              <div class="wf-node-wrap">
+                <div class="wf-pill c5" data-tip="HubSpot CRM record created + tagged">
+                  <span class="wf-pill-icon">🗂</span>
+                  CRM Updated
+                </div>
+                <div class="wf-step-num">5</div>
+              </div>
+              <div class="wf-label">Zero manual entry</div>
+            </div>
+          </div>
+        </div>
+        <div class="workflow-footer">
+          <div class="wf-stat">
+            <span class="wf-stat-dot" style="background:var(--green)"></span>
+            <strong>47</strong> <span>leads processed this week</span>
+          </div>
+          <div class="wf-stat">
+            <span class="wf-stat-dot" style="background:var(--teal)"></span>
+            <strong>132</strong> <span>auto-messages sent</span>
+          </div>
+          <div class="wf-stat">
+            <span class="wf-stat-dot" style="background:var(--purple)"></span>
+            <strong>~11 hrs</strong> <span>of manual work saved</span>
+          </div>
+          <div class="wf-stat">
+            <span class="wf-stat-dot" style="background:var(--amber)"></span>
+            <strong>99.8%</strong> <span>uptime this month</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row: Mini charts / info panels -->
+    <div class="bottom-row">
+      <!-- Source Breakdown -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="card-title-dot" style="background:var(--purple)"></span>
+            Lead Sources — This Week
+          </div>
+        </div>
+        <div style="padding:20px;display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+              <span style="font-size:12.5px;color:var(--text-secondary);font-weight:500">🌐 Website Form</span>
+              <span style="font-size:12.5px;color:var(--text-primary);font-weight:600">21 leads · 45%</span>
+            </div>
+            <div style="height:6px;background:var(--bg-base);border-radius:3px;overflow:hidden">
+              <div style="height:100%;width:45%;background:linear-gradient(90deg,var(--purple),var(--purple-light));border-radius:3px;animation:barGrow 1.3s cubic-bezier(0.4,0,0.2,1) 0.5s both;transform-origin:left"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+              <span style="font-size:12.5px;color:var(--text-secondary);font-weight:500">🔍 Google Ads</span>
+              <span style="font-size:12.5px;color:var(--text-primary);font-weight:600">16 leads · 34%</span>
+            </div>
+            <div style="height:6px;background:var(--bg-base);border-radius:3px;overflow:hidden">
+              <div style="height:100%;width:34%;background:linear-gradient(90deg,var(--teal),#6cf0e8);border-radius:3px;animation:barGrow 1.3s cubic-bezier(0.4,0,0.2,1) 0.6s both;transform-origin:left"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+              <span style="font-size:12.5px;color:var(--text-secondary);font-weight:500">📘 Facebook</span>
+              <span style="font-size:12.5px;color:var(--text-primary);font-weight:600">10 leads · 21%</span>
+            </div>
+            <div style="height:6px;background:var(--bg-base);border-radius:3px;overflow:hidden">
+              <div style="height:100%;width:21%;background:linear-gradient(90deg,var(--amber),#fbbf24);border-radius:3px;animation:barGrow 1.3s cubic-bezier(0.4,0,0.2,1) 0.7s both;transform-origin:left"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Performance -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="card-title-dot" style="background:var(--teal);box-shadow:0 0 6px var(--teal)"></span>
+            AI Performance Metrics
+          </div>
+        </div>
+        <div style="padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--green)">91%</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px;font-weight:500">Lead Score Accuracy</div>
+          </div>
+          <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--teal)">1.4m</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px;font-weight:500">Avg First Response</div>
+          </div>
+          <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--purple-light)">78%</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px;font-weight:500">Email Open Rate</div>
+          </div>
+          <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--amber)">$4,800</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px;font-weight:500">Pipeline Value</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align:center;padding:12px 0 0;border-top:1px solid var(--border)">
+      <p style="font-size:11px;color:var(--text-muted)">
+        Demo dashboard for <strong style="color:var(--text-secondary)">BrightHome Services</strong> — built by
+        <a href="index.html" style="color:var(--purple-light);text-decoration:none;font-weight:600">Lifelutions Automations</a>.
+        All data is illustrative.
+      </p>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // ── Counter animation on stat numbers ──
+  function animateCounter(el, target, suffix = '') {
+    const duration = 1400;
+    const start = performance.now();
+    const from = 0;
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(from + (target - from) * eased) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    // Stat counters
+    animateCounter(document.getElementById('stat-leads'),   47);
+    animateCounter(document.getElementById('stat-replies'), 132);
+    animateCounter(document.getElementById('stat-conv'),    23, '%');
+
+    // Pill filter interaction
+    document.querySelectorAll('.pill-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.closest('.card-actions').querySelectorAll('.pill-filter')
+          .forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // Nav item interaction
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    // Simulate live feed: append a new item every ~18 seconds
+    const feedItems = [
+      { icon: '✉', bg: 'var(--purple-dim)', text: 'Sent booking reminder SMS to <strong>David K.</strong> — appointment tomorrow 10 AM', time: 'Just now' },
+      { icon: '★', bg: 'var(--teal-dim)',   text: 'New lead from Google Ads enriched — <strong>Rachel W.</strong>, Scarborough', time: 'Just now' },
+      { icon: '✓', bg: 'var(--green-dim)',   text: 'Invoice #1047 auto-created for <strong>David K.</strong> — $280 deep clean', time: 'Just now' },
+    ];
+    let feedIdx = 0;
+    setInterval(() => {
+      const feed = document.querySelector('.activity-feed');
+      if (!feed) return;
+      const d = feedItems[feedIdx % feedItems.length];
+      feedIdx++;
+      const li = document.createElement('li');
+      li.className = 'activity-item';
+      li.style.animation = 'none';
+      li.style.opacity = '0';
+      li.style.transform = 'translateY(-8px)';
+      li.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      li.innerHTML = `
+        <div class="activity-icon" style="background:${d.bg}">${d.icon}</div>
+        <div class="activity-body">
+          <div class="activity-text">${d.text}</div>
+          <div class="activity-time">${d.time}</div>
+        </div>
+      `;
+      feed.insertBefore(li, feed.firstChild);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          li.style.opacity = '1';
+          li.style.transform = 'translateY(0)';
+        });
+      });
+      // Remove last if too many
+      if (feed.children.length > 10) feed.removeChild(feed.lastChild);
+    }, 18000);
+  });
+</script>
+</body>
+</html>
